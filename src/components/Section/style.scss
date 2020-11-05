@@ -1,0 +1,31 @@
+@import '../../containers/App/variables.scss';
+
+.Section {
+  + .Section .Section_title {
+    margin-top: 50px;
+  }
+}
+
+.Section_title {
+  font-size: 18px;
+  color: $c_red;
+  font-weight: 400;
+  padding: 5px 0;
+  margin-bottom: 10px;
+
+  &.-icon {
+    background: {
+      repeat: no-repeat;
+      position: left center;
+      size: 24px 24px;
+    }
+    padding-left: 30px;
+  }
+
+  $icons: 'grape', 'ribbon', 'bank';
+  @each $icon in $icons {
+    &.-#{$icon} {
+      background-image: url('./assets/icon_#{$icon}.svg');
+    }
+  }
+}
