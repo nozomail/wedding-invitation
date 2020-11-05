@@ -1,0 +1,24 @@
+@import '../../containers/App/variables.scss';
+
+.Card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.Card_title {
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 400;
+  font-family: 'Great Vibes', cursive;
+  color: #fff;
+  text-align: center;
+  background-color: $c_pink;
+  border-radius: 10px 10px 0 0;
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.Card_content {
+  padding: 20px 20px 30px;
+}
