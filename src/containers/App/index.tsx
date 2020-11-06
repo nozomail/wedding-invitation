@@ -3,6 +3,7 @@ import './style.scss';
 import { Card } from '../../components/Card';
 import { Section } from '../../components/Section';
 import { IndentSection } from '../../components/IndentSection';
+import { TextLink } from '../../components/TextLink';
 
 export function App(): JSX.Element {
   return (
@@ -10,13 +11,13 @@ export function App(): JSX.Element {
       <Card title="Venue Info & Map">
         <Section title="MUDBRICK VINEYARD & RESTAURANT" icon="grape">
           <IndentSection title="PHONE">
-            +64 9 372 9050
+            <TextLink url="tel:+6493729050" text="+64 9 372 9050" icon="phone" />
           </IndentSection>
-          <IndentSection title="TITLE">
-            126 Church Bay Road, Oneroa, Waiheke, New Zealand
+          <IndentSection title="ADDRESS">
+            <TextLink url="https://goo.gl/maps/CLfGz6X3tikkYNMC7" text="126 Church Bay Road, Oneroa, Waiheke, New Zealand" icon="map" />
           </IndentSection>
           <IndentSection title="EMAIL">
-            info@mudbrick.co.nz
+            <TextLink url="mailto:info@mudbrick.co.nz" text="info@mudbrick.co.nz" icon="email" />
           </IndentSection>
         </Section>
       </Card>
