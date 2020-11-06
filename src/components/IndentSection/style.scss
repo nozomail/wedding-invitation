@@ -1,0 +1,18 @@
+@import '../../containers/App/variables.scss';
+
+.IndentSection {
+  margin-left: 30px;
+  padding-left: 10px;
+  border-left: 2px solid $c_red;
+
+  + .IndentSection {
+    margin-top: 30px;
+  }
+}
+
+.IndentSection_title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  margin: 10px 0 5px;
+}
