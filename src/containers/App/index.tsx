@@ -4,6 +4,7 @@ import { Card } from '../../components/Card';
 import { Section } from '../../components/Section';
 import { IndentSection } from '../../components/IndentSection';
 import { TextLink } from '../../components/TextLink';
+import { Button } from '../../components/Button';
 
 export function App(): JSX.Element {
   return (
@@ -20,7 +21,9 @@ export function App(): JSX.Element {
             <TextLink url="mailto:info@mudbrick.co.nz" text="info@mudbrick.co.nz" icon="email" />
           </IndentSection>
         </Section>
+        <Button type="secondary" text="ADD GUEST" icon="plus" />
       </Card>
+      <Button type="primary" text="RSVP" icon="pen" />
     </div>
   );
 }
