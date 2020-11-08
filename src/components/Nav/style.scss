@@ -1,0 +1,24 @@
+.Nav {
+  margin-top: 40px;
+
+  a {
+    display: block;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    background-color: #aaa;
+    padding: 10px 20px;
+    border-bottom: 1px dashed #fff;
+    text-align: center;
+    background: {
+      image: url('./assets/icon_arrow-right.svg');
+      size: 20px 20px;
+      repeat: no-repeat;
+      position: right 10px center;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}

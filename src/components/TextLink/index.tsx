@@ -12,7 +12,9 @@ export function TextLink({ url, text, icon }: Props): JSX.Element {
 
   return (
     <div className="TextLink">
-      <a className={`TextLink_text ${linkStyle}`} href={url} target="_blank">{text}</a>
+      <a className={`TextLink_text ${linkStyle}`} href={url} target="_blank">
+        {text}
+      </a>
     </div>
   );
 }
