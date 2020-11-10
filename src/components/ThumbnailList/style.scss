@@ -1,0 +1,29 @@
+.ThumbnailList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.ThumbnailList_item {
+  width: calc(50% - 10px);
+  padding-top: calc(50% - 10px);
+  border-radius: 6px;
+  background: center center / cover no-repeat;
+  position: relative;
+  overflow: hidden;
+
+  &:nth-child(2) ~ li {
+    margin-top: 20px;
+  }
+
+  span {
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 5px;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
