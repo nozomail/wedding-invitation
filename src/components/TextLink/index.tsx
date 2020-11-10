@@ -4,7 +4,7 @@ import './style.scss';
 type Props = {
   url: string;
   text: string;
-  icon?: string;
+  icon?: 'email' | 'map' | 'phone';
 };
 
 export function TextLink({ url, text, icon }: Props): JSX.Element {

@@ -3,7 +3,7 @@ import './style.scss';
 
 type Props = {
   title: string;
-  icon?: string;
+  icon?: 'grape' | 'ribbon' | 'bank';
   children: ReactNode;
 };
 
