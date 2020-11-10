@@ -11,8 +11,10 @@ type Props = {
 export function Nav({ navItems }: Props): JSX.Element {
   return (
     <nav className="Nav">
-      {navItems.map((item) => (
-        <a href={item.path}>{item.name}</a>
+      {navItems.map((item, index) => (
+        <a href={item.path} key={index}>
+          {item.name}
+        </a>
       ))}
     </nav>
   );
