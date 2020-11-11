@@ -1,5 +1,6 @@
-import React from 'react';
-import './style.scss';
+import React, { useState } from 'react';
+import '../../styles/global.scss';
+
 import { Card } from '../../components/Card';
 import { Section } from '../../components/Section';
 import { IndentSection } from '../../components/IndentSection';

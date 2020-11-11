@@ -1,0 +1,12 @@
+@import './variables';
+
+%input {
+  display: block;
+  width: 100%;
+  border: 1px solid $c_gray;
+  border-radius: 6px;
+
+  &:focus {
+    border-color: $c_red;
+  }
+}

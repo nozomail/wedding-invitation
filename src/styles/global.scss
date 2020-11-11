@@ -1,5 +1,5 @@
-@import './variables.scss';
-@import './reset.scss';
+@import './variables';
+@import './reset';
 
 html {
   height: 100%;
@@ -12,7 +12,7 @@ body {
   margin: 0;
   font-size: 16px;
   line-height: 1.5;
-  color: #333;
+  color: $c_black;
 }
 
 *,
@@ -22,7 +22,8 @@ body {
 }
 
 input,
-button {
+button,
+textarea {
   font-size: 16px;
   outline: none;
   appearance: none;
