@@ -1,0 +1,17 @@
+@import '../../styles/variables';
+
+.InputField {
+  + .InputField {
+    margin-top: 20px;
+  }
+
+  &.-question + &.-question {
+    margin-top: 30px;
+  }
+}
+
+.InputField_required {
+  color: $c_red;
+  font-size: 12px;
+  padding-left: 5px;
+}

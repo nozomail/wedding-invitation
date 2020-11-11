@@ -1,0 +1,57 @@
+@import '../../styles/variables';
+
+.RadioButton {
+  display: block;
+  cursor: pointer;
+
+  + .RadioButton {
+    margin-top: 14px;
+  }
+
+  .InputField_label + & {
+    margin-top: 10px;
+  }
+
+  input[type='radio']:checked + .RadioButton_label {
+    color: $c_red;
+
+    &::before {
+      border-color: $c_red;
+    }
+
+    &::after {
+      display: block;
+      width: 14px;
+      height: 14px;
+      content: '';
+      background: $c_red;
+      border-radius: 7px;
+      position: absolute;
+      top: 0;
+      left: 5px;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+}
+
+.RadioButton_label {
+  display: block;
+  padding-left: 40px;
+  position: relative;
+
+  &::before {
+    display: block;
+    width: 24px;
+    height: 24px;
+    content: '';
+    border: 1px solid $c_gray;
+    background-color: #fff;
+    border-radius: 14px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}

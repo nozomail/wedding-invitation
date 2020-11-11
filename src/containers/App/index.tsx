@@ -8,6 +8,11 @@ import { TextLink } from '../../components/TextLink';
 import { Button } from '../../components/Button';
 import { Nav } from '../../components/Nav';
 import { ThumbnailList } from '../../components/ThumbnailList';
+import { InputField } from '../../components/InputField';
+import { Input } from '../../components/Input';
+import { Textarea } from '../../components/Textarea';
+import { Select } from '../../components/Select';
+import { RadioButton } from '../../components/RadioButton';
 
 import imgFlight from '../../assets/images/honeymoon_flight1.jpg';
 import imgColosseum from '../../assets/images/honeymoon_colosseum.jpg';
@@ -57,6 +62,8 @@ export function App(): JSX.Element {
     },
   ];
 
+  const [firstName, setFirstName] = useState('');
+
   return (
     <div className="App">
       <Card title="Venue Info & Map">
@@ -75,6 +82,41 @@ export function App(): JSX.Element {
             <TextLink url="mailto:info@mudbrick.co.nz" text="info@mudbrick.co.nz" icon="email" />
           </IndentSection>
         </Section>
+
+        <InputField label="FIRST NAME" isRequired>
+          <Input type="text" value={firstName} onChange={setFirstName} />
+        </InputField>
+        <InputField label="POSTAL ADDRESS" isRequired>
+          <Textarea />
+        </InputField>
+        <InputField label="TITLE">
+          <Select>
+            <option value="mr">MR.</option>
+            <option value="mrs">MRS.</option>
+            <option value="ms">MS.</option>
+            <option value="miss">MISS.</option>
+            <option value="dr">DR.</option>
+            <option value="other">OTHER</option>
+          </Select>
+        </InputField>
+        <InputField
+          label="Do you require a seat/seats on the 3.45 pm bus from Matiatia Wharf to Mudbrick?"
+          isQuestion
+        >
+          <RadioButton name="transport" value="yes" label="Yes" />
+          <RadioButton name="transport" value="no" label="No" />
+          <RadioButton name="transport" value="idk" label="Not sure yet" />
+        </InputField>
+        <InputField
+          label="Are you staying on Waiheke Island after the reception?"
+          isRequired
+          isQuestion
+        >
+          <RadioButton name="accommodation" value="yes" label="Yes" />
+          <RadioButton name="accommodation" value="no" label="No" />
+          <RadioButton name="accommodation" value="idk" label="Not sure yet" />
+        </InputField>
+
         <Section title="Travel to Italy" icon="ribbon">
           <ThumbnailList thumbnails={thumbnails}></ThumbnailList>
         </Section>

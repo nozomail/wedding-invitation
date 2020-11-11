@@ -1,0 +1,7 @@
+@import '../../styles/placeholders';
+
+.Input {
+  @extend %input;
+  height: 40px;
+  padding: 0 16px;
+}

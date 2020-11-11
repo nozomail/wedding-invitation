@@ -1,0 +1,20 @@
+@import '../../styles/variables';
+
+.Select {
+  display: block;
+  width: 100%;
+  height: 40px;
+  border: 1px solid $c_gray;
+  border-radius: 6px;
+  font-size: 16px;
+  background: {
+    image: url('./assets/icon_arrow-down.svg');
+    size: 12px 12px;
+    repeat: no-repeat;
+    position: right 16px center;
+    color: #fff;
+  }
+  padding: 0 16px;
+  outline: none;
+  appearance: none;
+}

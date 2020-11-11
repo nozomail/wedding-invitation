@@ -1,0 +1,12 @@
+@import '../../styles/placeholders';
+@import '../../styles/variables';
+
+.Textarea {
+  @extend %input;
+  padding: 10px 16px;
+  resize: none;
+
+  &:focus {
+    border-color: $c_red;
+  }
+}
