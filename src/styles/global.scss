@@ -4,7 +4,6 @@
 html {
   height: 100%;
   font-family: 'Assistant', 'Noto Sans JP', sans-serif;
-  background-color: aliceblue;
 }
 
 body {
@@ -13,12 +12,19 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: $c_black;
+  background: url('@assets/images/bg.png') repeat;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+#root {
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 input,
