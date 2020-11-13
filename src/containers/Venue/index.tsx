@@ -88,7 +88,10 @@ export function Venue(): JSX.Element {
           <Map url="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d25564.768794170166!2d174.9808681!3d-36.7802558!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d72cb99c337c327%3A0x2962952677981116!2sWaiheke%20Ferry%20Terminal!5e0!3m2!1sen!2snz!4v1605240009294!5m2!1sen!2snz" />
         </Section>
       </Card>
-      <Button type="primary" text="RSVP" icon="pen" />
+
+      <Block type="top" size="large">
+        <Button type="primary" text="RSVP" icon="pen" />
+      </Block>
     </div>
   );
 }
