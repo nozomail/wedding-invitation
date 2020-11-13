@@ -1,0 +1,42 @@
+.Block {
+  $sizes: (
+    'small': 10,
+    'medium': 20,
+    'large': 40,
+  );
+  $positions: 'top', 'right', 'bottom', 'left';
+
+  &.-around {
+    @each $sizeName, $sizeValue in $sizes {
+      &.-#{$sizeName} {
+        padding: #{$sizeValue}px;
+      }
+    }
+  }
+
+  &.-vertical {
+    @each $sizeName, $sizeValue in $sizes {
+      &.-#{$sizeName} {
+        padding: #{$sizeValue}px 0;
+      }
+    }
+  }
+
+  &.-horizontal {
+    @each $sizeName, $sizeValue in $sizes {
+      &.-#{$sizeName} {
+        padding: 0 #{$sizeValue}px;
+      }
+    }
+  }
+
+  @each $position in $positions {
+    &.-#{$position} {
+      @each $sizeName, $sizeValue in $sizes {
+        &.-#{$sizeName} {
+          padding-#{$position}: #{$sizeValue}px;
+        }
+      }
+    }
+  }
+}
