@@ -4,6 +4,7 @@ import './style.scss';
 
 import { Nav } from '@components/Nav';
 import { Venue } from '@containers/Venue';
+import { Timeline } from '@containers/Timeline';
 
 export function App(): JSX.Element {
   const navItems = [
@@ -38,8 +39,9 @@ export function App(): JSX.Element {
       <div className="App">
         <div className="App_main">
           <Switch>
-            <Route path="/" component={Venue} />
-            <Route path="/venue" component={Venue} />
+            <Route exact path="/" component={Venue} />
+            <Route exact path="/venue" component={Venue} />
+            <Route exact path="/timeline" component={Timeline} />
           </Switch>
         </div>
         <div className="App_nav">
