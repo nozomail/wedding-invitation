@@ -1,0 +1,51 @@
+@import '@styles/variables';
+.TimelineItem {
+  display: flex;
+  margin-top: 10px;
+
+  + .TimelineItem {
+    margin-top: 40px;
+  }
+
+  .HelperText {
+    color: $c_red;
+    margin-left: 30px;
+  }
+}
+
+.TimelineItem_head {
+  width: 80px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.TimelineItem_body {
+  margin-left: 20px;
+}
+
+.TimelineItem_item {
+  color: $c_red;
+  padding-left: 30px;
+  background: {
+    position: left top;
+    repeat: no-repeat;
+  }
+
+  + .TimelineItem_item {
+    margin-top: 20px;
+  }
+
+  $icons: 'ferry', 'bus', 'ring', 'cocktail', 'camera', 'dinner', 'party';
+
+  @each $icon in $icons {
+    &.-#{$icon} {
+      background-image: url('./assets/icon_#{$icon}.svg');
+
+      @if $icon == 'bus' or $icon == 'camera' {
+        background-size: 20px 20px;
+      } @else {
+        background-size: 24px 24px;
+      }
+    }
+  }
+}
