@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/global.scss';
+import '@styles/global.scss';
 
 import { Card } from '@components/Card';
 import { Section } from '@components/Section';
