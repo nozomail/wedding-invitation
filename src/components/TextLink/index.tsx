@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import './style.scss';
 
 type Props = {
   url: string;
-  text: string;
-  icon?: 'email' | 'map' | 'phone';
+  icon?: 'arrow' | 'email' | 'map' | 'phone';
+  children: ReactNode;
 };
 
-export function TextLink({ url, text, icon }: Props): JSX.Element {
+export function TextLink({ url, icon, children }: Props): JSX.Element {
   const linkStyle = icon ? ` -icon -${icon}` : '';
 
   return (
     <div className="TextLink">
       <a className={`TextLink_text ${linkStyle}`} href={url} target="_blank">
-        {text}
+        {children}
       </a>
     </div>
   );

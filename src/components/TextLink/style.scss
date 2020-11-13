@@ -25,7 +25,7 @@
     }
   }
 
-  $icons: 'phone', 'map', 'email';
+  $icons: 'arrow', 'phone', 'map', 'email';
   @each $icon in $icons {
     &.-#{$icon}::before {
       background-image: url('./assets/icon_#{$icon}.svg');
