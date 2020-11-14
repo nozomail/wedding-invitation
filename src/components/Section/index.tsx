@@ -12,7 +12,7 @@ export function Section({ title, icon, children }: Props): JSX.Element {
 
   return (
     <section className="Section">
-      <h1 className={`Section_title ${titleStyle}`}>{title}</h1>
+      <h1 className={`Section_title${titleStyle}`}>{title}</h1>
       <div className="Section_content">{children}</div>
     </section>
   );

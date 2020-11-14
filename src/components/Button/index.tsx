@@ -11,7 +11,7 @@ export function Button({ type, text, icon }: Props): JSX.Element {
   const buttonStyle = icon ? ` -icon -${icon}` : '';
 
   return (
-    <button type="button" className={`Button -${type} ${buttonStyle}`}>
+    <button type="button" className={`Button -${type}${buttonStyle}`}>
       <span>{text}</span>
     </button>
   );
