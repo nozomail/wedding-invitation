@@ -9,8 +9,8 @@ html {
 body {
   height: 100%;
   margin: 0;
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.75;
   color: $c_black;
   background: url('@assets/images/bg.png') repeat;
 }
@@ -30,9 +30,14 @@ body {
 input,
 button,
 textarea {
-  font-size: 16px;
   outline: none;
   appearance: none;
+}
+
+input,
+textarea,
+select {
+  font-size: 16px;
 }
 
 input[type='radio'],
