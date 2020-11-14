@@ -5,6 +5,7 @@ import './style.scss';
 import { Nav } from '@components/Nav';
 import { Venue } from '@containers/Venue';
 import { Timeline } from '@containers/Timeline';
+import { Honeymoon } from '@containers/Honeymoon';
 
 export function App(): JSX.Element {
   const navItems = [
@@ -26,7 +27,7 @@ export function App(): JSX.Element {
     },
     {
       name: 'HONEYMOON CONTRIBUTION',
-      path: 'contribution',
+      path: 'honeymoon',
     },
     {
       name: 'ENVELOPE',
@@ -42,6 +43,7 @@ export function App(): JSX.Element {
             <Route exact path="/" component={Venue} />
             <Route exact path="/venue" component={Venue} />
             <Route exact path="/timeline" component={Timeline} />
+            <Route exact path="/honeymoon" component={Honeymoon} />
           </Switch>
         </div>
         <div className="App_nav">
