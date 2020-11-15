@@ -1,0 +1,110 @@
+@import '@styles/variables';
+@import '@styles/mixins';
+
+@function vw($value) {
+  @return calc(min(#{$value}vw, calc(6.4 * #{$value}px)));
+}
+
+.InvitationCard {
+  max-width: 600px;
+  text-align: center;
+  background-image: url('./assets/flower1.png'), url('./assets/flower2.png');
+  background-repeat: no-repeat, no-repeat;
+  background-size: vw(70) auto, vw(50) auto;
+  background-position: left vw(-10) top vw(-5), right vw(-3) bottom vw(-5);
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  padding: vw(38) vw(5) vw(30);
+  margin: 0 auto;
+
+  span {
+    display: block;
+    font-family: 'Crimson Text';
+    font-size: vw(3.4);
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+
+    &.InvitationCard_julius {
+      font-family: 'Julius Sans One';
+      font-size: vw(4.4);
+      color: $c_green;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+
+      &.-date {
+        margin-top: vw(10);
+      }
+
+      &.-venue {
+        margin-top: vw(5);
+      }
+    }
+
+    &.InvitationCard_reception {
+      font-family: 'Great Vibes';
+      font-size: vw(6);
+      color: $c_pink;
+      margin-top: vw(10);
+    }
+
+    &.InvitationCard_rsvp {
+      font-size: vw(3.4);
+      margin-top: vw(10);
+    }
+  }
+
+  .HelperText {
+    width: vw(58);
+    font-family: 'Crimson Text';
+    font-size: vw(2.6);
+    text-align: left;
+    margin: vw(5) auto 0;
+
+    + .HelperText {
+      margin-top: 2vw;
+    }
+  }
+}
+
+.InvitationCard_host {
+  margin-bottom: vw(3);
+
+  span {
+    font-family: 'Great Vibes';
+    font-size: vw(11);
+    line-height: 1;
+    color: $c_pink;
+
+    &.-and {
+      font-size: vw(6);
+      margin: vw(3) 0 vw(1);
+    }
+  }
+}
+
+.InvitationCard_guest {
+  border-top: 1px solid $c_lightgray;
+  border-bottom: 1px solid $c_lightgray;
+  padding: vw(2) 0;
+  margin: vw(4) 0;
+
+  span {
+    display: inline-block;
+    font-family: 'Great Vibes';
+    font-size: vw(8);
+    line-height: 1.5;
+    color: $c_pink;
+
+    &.-and {
+      font-size: vw(5);
+      padding: 0 0.5em;
+    }
+  }
+}
+
+.InvitationCard_link {
+  color: $c_red;
+  border-bottom: 1px dotted $c_red;
+  text-decoration: none;
+}
