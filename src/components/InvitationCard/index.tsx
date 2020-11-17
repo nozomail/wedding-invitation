@@ -11,18 +11,19 @@ export function InvitationCard({ guests }: Props): JSX.Element {
   const guestNames = guests.map((guest, index) => {
     switch (index) {
       case 0:
-        return <span>{guest}</span>;
+        return <span key={index}>{guest}</span>;
       case guests.length - 1:
         return (
-          <>
+          <div key={index}>
             <span className="-and">&</span>
             <span>{guest}</span>
-          </>
+          </div>
         );
       default:
-        return <span>, {guest}</span>;
+        return <span key={index}>, {guest}</span>;
     }
   });
+
   return (
     <div className="InvitationCard">
       <div className="InvitationCard_host">

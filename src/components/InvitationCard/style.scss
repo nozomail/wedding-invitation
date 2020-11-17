@@ -1,9 +1,6 @@
 @import '@styles/variables';
 @import '@styles/mixins';
-
-@function vw($value) {
-  @return calc(min(#{$value}vw, calc(6.4 * #{$value}px)));
-}
+@import '@styles/functions';
 
 .InvitationCard {
   max-width: 600px;
