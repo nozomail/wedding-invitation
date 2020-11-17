@@ -1,0 +1,197 @@
+@import '@styles/variables';
+@import '@styles/mixins';
+@import '@styles/functions';
+@import '@styles/keyframes';
+
+.CardEnvelope {
+  width: 100%;
+  max-width: 700px;
+  padding-top: pct(600 / 840 * 100);
+  line-height: 1;
+  position: relative;
+  margin: 0 auto;
+  perspective: 1000px;
+  transition: transform 1.4s ease-in-out;
+  animation: fadeIn 1.4s 1s both;
+
+  &.is-flipped {
+    .CardEnvelope_front {
+      transform: rotate3d(0, 1, 0, 180deg);
+    }
+
+    .CardEnvelope_back,
+    .CardEnvelope_inside,
+    .CardEnvelope_lid,
+    .CardEnvelope_card {
+      transform: rotate3d(0, 1, 0, 0);
+    }
+  }
+
+  &.is-open {
+    transform: translateY(vw(15));
+
+    .CardEnvelope_lid {
+      transform: rotate3d(1, 0, 0, 180deg);
+      backface-visibility: visible;
+    }
+
+    .CardEnvelope_lidFront {
+      transform: rotate3d(1, 0, 0, 180deg);
+    }
+
+    .CardEnvelope_lidBack {
+      transform: rotate3d(1, 0, 0, 0);
+    }
+
+    .CardEnvelope_card {
+      display: block;
+    }
+  }
+
+  &.is-pulled {
+    animation: fadeOut 1s both 2s;
+
+    .CardEnvelope_lid {
+      z-index: -1;
+    }
+
+    .CardEnvelope_card {
+      height: vw(600 / 840 * 90 + 20);
+      transition-duration: 3s;
+      transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transform: rotate3d(0, 1, 0, 0) translate3d(0, vw(-20), 0);
+    }
+  }
+
+  @at-root {
+    .CardEnvelope_front,
+    .CardEnvelope_back,
+    .CardEnvelope_lid,
+    .CardEnvelope_lidFront,
+    .CardEnvelope_lidBack,
+    .CardEnvelope_inside {
+      width: 100%;
+      padding-top: pct(600 / 840 * 100);
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0 auto;
+      backface-visibility: hidden;
+      transition: transform 1.4s ease-in-out;
+    }
+
+    .CardEnvelope_front {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      background: {
+        image: url('./assets/envelope1.jpg');
+        repeat: no-repeat;
+        size: cover;
+        position: center;
+      }
+      border-radius: 4px;
+      box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.4);
+      padding: vw(8) 10px 0;
+    }
+
+    .CardEnvelope_guest {
+      font-family: 'Great Vibes';
+      font-size: vw(8);
+      line-height: 1.5;
+      color: #d5b617;
+    }
+
+    .CardEnvelope_back {
+      background: {
+        image: url('./assets/envelope2-1.png');
+        repeat: no-repeat;
+        size: cover;
+        position: center center;
+      }
+      transform: rotate3d(0, 1, 0, -180deg);
+    }
+
+    .CardEnvelope_inside {
+      background: {
+        image: url('./assets/envelope2-3.png');
+        repeat: no-repeat;
+        size: cover;
+        position: center center;
+      }
+      transform: rotate3d(0, 1, 0, -180deg);
+    }
+
+    .CardEnvelope_lid {
+      transform-origin: top center;
+      transform: rotate3d(0, 1, 0, -180deg);
+    }
+
+    .CardEnvelope_lidFront {
+      background: {
+        image: url('./assets/envelope2-2.png');
+        repeat: no-repeat;
+        size: 100% auto;
+        position: center top;
+      }
+      transform: rotate3d(1, 0, 0, 0);
+      transform-origin: top center;
+    }
+
+    .CardEnvelope_lidBack {
+      background: {
+        image: url('./assets/envelope3-2.png');
+        repeat: no-repeat;
+        size: 100% auto;
+        position: center top;
+      }
+      transform: rotate3d(1, 0, 0, 180deg);
+      transform-origin: top center;
+    }
+
+    .CardEnvelope_card {
+      display: none;
+      width: pct(90);
+      height: pct(600 / 840 * 90);
+      line-height: 1.8;
+      text-align: center;
+      background: {
+        image: url('./assets/flower1.png');
+        repeat: no-repeat;
+        size: vw(60) auto;
+        position: left vw(-10) top vw(-5);
+        color: #ffff;
+      }
+      border-radius: 10px;
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+      padding-top: vw(30);
+      position: absolute;
+      top: vw(2);
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      backface-visibility: hidden;
+      overflow: hidden;
+      transition: transform 1.4s ease-in-out, height 1s;
+      transform: rotate3d(0, 1, 0, -180deg);
+
+      .CardEnvelope_host {
+        margin-bottom: vw(3);
+
+        span {
+          display: block;
+          font-family: 'Great Vibes';
+          font-size: vw(10);
+          line-height: 1;
+          color: $c_pink;
+
+          &.-and {
+            font-size: vw(5);
+            margin: vw(3) 0 vw(1);
+          }
+        }
+      }
+    }
+  }
+}
