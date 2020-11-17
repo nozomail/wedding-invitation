@@ -1,15 +1,22 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import './style.scss';
 
 import { Nav } from '@components/Nav';
+import { Envelope } from '@containers/Envelope';
 import { Invitation } from '@containers/Invitation';
 import { Venue } from '@containers/Venue';
 import { Timeline } from '@containers/Timeline';
 import { Honeymoon } from '@containers/Honeymoon';
 
 export function App(): JSX.Element {
+  const location = useLocation();
+  console.log(location.pathname);
   const navItems = [
+    {
+      name: 'ENVELOPE',
+      path: 'envelope',
+    },
     {
       name: 'INVITAION',
       path: 'invitation',
@@ -30,28 +37,25 @@ export function App(): JSX.Element {
       name: 'HONEYMOON CONTRIBUTION',
       path: 'honeymoon',
     },
-    {
-      name: 'ENVELOPE',
-      path: 'envelope',
-    },
   ];
 
   return (
-    <BrowserRouter>
-      <div className="App">
-        <div className="App_main">
-          <Switch>
-            <Route exact path="/" component={Venue} />
-            <Route exact path="/invitation" component={Invitation} />
-            <Route exact path="/venue" component={Venue} />
-            <Route exact path="/timeline" component={Timeline} />
-            <Route exact path="/honeymoon" component={Honeymoon} />
-          </Switch>
-        </div>
+    <div className="App">
+      <div className="App_main">
+        <Switch>
+          <Route exact path="/" component={Venue} />
+          <Route exact path="/envelope" component={Envelope} />
+          <Route exact path="/invitation" component={Invitation} />
+          <Route exact path="/venue" component={Venue} />
+          <Route exact path="/timeline" component={Timeline} />
+          <Route exact path="/honeymoon" component={Honeymoon} />
+        </Switch>
+      </div>
+      {location.pathname !== '/envelope' && (
         <div className="App_nav">
           <Nav navItems={navItems}></Nav>
         </div>
-      </div>
-    </BrowserRouter>
+      )}
+    </div>
   );
 }
