@@ -4,7 +4,7 @@ import './style.scss';
 type Props = {
   type: 'primary' | 'secondary';
   text: string;
-  icon?: 'pen' | 'plane' | 'plus';
+  icon?: 'pen' | 'plane' | 'plus' | 'lock';
 };
 
 export function Button({ type, text, icon }: Props): JSX.Element {

@@ -50,7 +50,7 @@
     }
   }
 
-  $icons: 'pen', 'plus', 'plane';
+  $icons: 'pen', 'plus', 'plane', 'lock';
   @each $icon in $icons {
     &.-#{$icon} span {
       background-image: url('./assets/icon_#{$icon}.svg');
