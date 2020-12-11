@@ -3,6 +3,7 @@ import { Switch, Route, useLocation } from 'react-router-dom';
 import './style.scss';
 
 import { Nav } from '@components/Nav';
+import { Login } from '@containers/Login';
 import { Envelope } from '@containers/Envelope';
 import { Invitation } from '@containers/Invitation';
 import { Venue } from '@containers/Venue';
@@ -43,6 +44,7 @@ export function App(): JSX.Element {
     <div className="App">
       <div className="App_main">
         <Switch>
+          <Route exact path="/login" component={Login} />
           <Route exact path="/" component={Venue} />
           <Route exact path="/envelope" component={Envelope} />
           <Route exact path="/invitation" component={Invitation} />
