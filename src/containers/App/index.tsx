@@ -3,6 +3,7 @@ import { Switch, Route, useLocation } from 'react-router-dom';
 import './style.scss';
 
 import { Nav } from '@components/Nav';
+import { PrivateRoute } from '@components/PrivateRoute';
 import { Login } from '@containers/Login';
 import { Envelope } from '@containers/Envelope';
 import { Invitation } from '@containers/Invitation';
@@ -10,9 +11,10 @@ import { Venue } from '@containers/Venue';
 import { Timeline } from '@containers/Timeline';
 import { Honeymoon } from '@containers/Honeymoon';
 
+import { AuthContextProvider } from '@context/authContext';
+
 export function App(): JSX.Element {
   const location = useLocation();
-  console.log(location.pathname);
   const navItems = [
     {
       name: 'ENVELOPE',
@@ -41,23 +43,24 @@ export function App(): JSX.Element {
   ];
 
   return (
-    <div className="App">
-      <div className="App_main">
-        <Switch>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/" component={Venue} />
-          <Route exact path="/envelope" component={Envelope} />
-          <Route exact path="/invitation" component={Invitation} />
-          <Route exact path="/venue" component={Venue} />
-          <Route exact path="/timeline" component={Timeline} />
-          <Route exact path="/honeymoon" component={Honeymoon} />
-        </Switch>
-      </div>
-      {location.pathname !== '/envelope' && (
-        <div className="App_nav">
-          <Nav navItems={navItems}></Nav>
+    <AuthContextProvider>
+      <div className="App">
+        <div className="App_main">
+          <Switch>
+            <Route exact path="/login" component={Login} />
+            <PrivateRoute exact path="/envelope" component={Envelope} />
+            <PrivateRoute exact path="/invitation" component={Invitation} />
+            <PrivateRoute exact path="/venue" component={Venue} />
+            <PrivateRoute exact path="/timeline" component={Timeline} />
+            <PrivateRoute exact path="/honeymoon" component={Honeymoon} />
+          </Switch>
         </div>
-      )}
-    </div>
+        {location.pathname !== '/login' && location.pathname !== '/envelope' && (
+          <div className="App_nav">
+            <Nav navItems={navItems}></Nav>
+          </div>
+        )}
+      </div>
+    </AuthContextProvider>
   );
 }

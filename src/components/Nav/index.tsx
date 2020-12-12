@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './style.scss';
 
 type Props = {
@@ -12,9 +13,9 @@ export function Nav({ navItems }: Props): JSX.Element {
   return (
     <nav className="Nav">
       {navItems.map((item, index) => (
-        <a href={item.path} key={index}>
+        <Link to={item.path} key={index}>
           {item.name}
-        </a>
+        </Link>
       ))}
     </nav>
   );
