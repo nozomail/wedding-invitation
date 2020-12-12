@@ -47,4 +47,9 @@
     background-color: rgba($c_pink, 0.1);
     border: 2px solid $c_red;
   }
+
+  &.-center {
+    display: flex;
+    justify-content: center;
+  }
 }
