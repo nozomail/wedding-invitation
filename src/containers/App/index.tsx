@@ -8,6 +8,7 @@ import { Login } from '@containers/Login';
 import { Envelope } from '@containers/Envelope';
 import { Invitation } from '@containers/Invitation';
 import { Venue } from '@containers/Venue';
+import { Rsvp } from '@containers/Rsvp';
 import { Timeline } from '@containers/Timeline';
 import { Honeymoon } from '@containers/Honeymoon';
 
@@ -51,6 +52,7 @@ export function App(): JSX.Element {
             <PrivateRoute exact path="/envelope" component={Envelope} />
             <PrivateRoute exact path="/invitation" component={Invitation} />
             <PrivateRoute exact path="/venue" component={Venue} />
+            <PrivateRoute exact path="/rsvp" component={Rsvp} />
             <PrivateRoute exact path="/timeline" component={Timeline} />
             <PrivateRoute exact path="/honeymoon" component={Honeymoon} />
           </Switch>

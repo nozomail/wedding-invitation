@@ -125,7 +125,7 @@ export function Honeymoon(): JSX.Element {
         </Block>
 
         <Section title="BANK ACCOUNT INFO" icon="bank">
-          <Block size="large" isColor>
+          <Block size="large" isColor isBorder>
             <Text isCenter>NOZOMI MAIL</Text>
             <Text isCenter>01-2345-6789-00</Text>
           </Block>

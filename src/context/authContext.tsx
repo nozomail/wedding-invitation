@@ -15,7 +15,7 @@ type AuthContextProviderProps = {
 export const authContext = createContext<authContextProps>(undefined);
 
 export function AuthContextProvider({ children }: AuthContextProviderProps): JSX.Element {
-  const [user, setUser] = useState<string | null>(null);
+  const [user, setUser] = useState<string | null>('user');
 
   const login = () => {
     setUser('user');

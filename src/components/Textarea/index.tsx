@@ -3,6 +3,7 @@ import './style.scss';
 
 type Props = {
   rows?: number;
+  name?: string;
 };
 
 export function Textarea({ rows = 4 }: Props): JSX.Element {

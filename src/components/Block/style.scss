@@ -45,7 +45,14 @@
 
   &.-color {
     background-color: rgba($c_pink, 0.1);
+  }
+
+  &.-border {
     border: 2px solid $c_red;
+  }
+
+  &.-roundCorner {
+    border-radius: 6px;
   }
 
   &.-center {
