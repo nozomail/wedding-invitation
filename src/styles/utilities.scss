@@ -1,7 +1,11 @@
 @import './variables';
 
 .u-text-red {
-  color: $c_red;
+  color: $c_red !important;
+}
+
+.u-bg-green {
+  background-color: $c_green !important;
 }
 
 .u-bold {

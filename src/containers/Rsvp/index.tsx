@@ -207,7 +207,7 @@ export function Rsvp(): JSX.Element {
                     <RadioButton name="bbq" label="NOT SURE YET" value="unknown" />
                   </InputField>
                   <InputField label="PLEASE LET US KNOW IF YOU HAVE ANY QUESTIONS OR COMMENTS.">
-                    <Textarea name="message" required></Textarea>
+                    <Textarea name="message"></Textarea>
                   </InputField>
                 </div>
               ) : (

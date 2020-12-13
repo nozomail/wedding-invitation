@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
 import './style.scss';
 
@@ -14,38 +14,44 @@ import { Honeymoon } from '@containers/Honeymoon';
 
 import { AuthContextProvider } from '@context/authContext';
 
+const navItems = [
+  {
+    name: 'INVITAION',
+    path: '/invitation',
+  },
+  {
+    name: 'VENUE',
+    path: '/venue',
+  },
+  {
+    name: 'RSVP',
+    path: '/rsvp',
+  },
+  {
+    name: 'WEDDING DAY TIMELINE',
+    path: '/timeline',
+  },
+  {
+    name: 'HONEYMOON CONTRIBUTION',
+    path: '/honeymoon',
+  },
+  {
+    name: 'ENVELOPE',
+    path: '/envelope',
+  },
+];
+
 export function App(): JSX.Element {
   const location = useLocation();
-  const navItems = [
-    {
-      name: 'ENVELOPE',
-      path: 'envelope',
-    },
-    {
-      name: 'INVITAION',
-      path: 'invitation',
-    },
-    {
-      name: 'VENUE',
-      path: 'venue',
-    },
-    {
-      name: 'RSVP',
-      path: 'rsvp',
-    },
-    {
-      name: 'WEDDING DAY TIMELINE',
-      path: 'timeline',
-    },
-    {
-      name: 'HONEYMOON CONTRIBUTION',
-      path: 'honeymoon',
-    },
-  ];
+  const appRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    appRef.current.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <AuthContextProvider>
-      <div className="App">
+      <div className="App" ref={appRef}>
         <div className="App_main">
           <Switch>
             <Route exact path="/login" component={Login} />

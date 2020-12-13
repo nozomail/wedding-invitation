@@ -1,4 +1,10 @@
+@import '@styles/mixins';
+
 .Nav {
+  @include wide {
+    display: flex;
+  }
+
   a {
     display: block;
     color: #fff;
@@ -14,8 +20,22 @@
       position: right 10px center;
     }
 
+    @include wide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      background-image: none;
+      border-bottom: 0;
+      border-right: 1px dashed #fff;
+    }
+
     &:last-child {
       border-bottom: 0;
+
+      @include wide {
+        border-right: 0;
+      }
     }
   }
 }

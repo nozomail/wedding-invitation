@@ -1,5 +1,11 @@
+@import '@styles/mixins';
+
 .Envelope {
   display: flex;
   height: 100%;
   align-items: center;
+
+  @include wide {
+    margin-top: -80px;
+  }
 }

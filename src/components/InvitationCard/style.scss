@@ -11,7 +11,7 @@
   background-position: left vw(-10) top vw(-5), right vw(-3) bottom vw(-5);
   background-color: #fff;
   border-radius: $br_lg;
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: $shadow_md;
   padding: vw(38) vw(5) vw(30);
   margin: 0 auto;
 

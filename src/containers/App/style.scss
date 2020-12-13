@@ -1,4 +1,6 @@
 @import '@styles/global';
+@import '@styles/variables';
+@import '@styles/mixins';
 @import '@styles/utilities';
 
 .App {
@@ -9,4 +11,20 @@
 .App_main {
   padding: 20px 20px 40px;
   min-height: calc(100% - 224px);
+
+  @include wide {
+    min-height: 0;
+    padding-top: 80px;
+  }
+}
+
+.App_nav {
+  @include wide {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    box-shadow: $shadow_md;
+  }
 }

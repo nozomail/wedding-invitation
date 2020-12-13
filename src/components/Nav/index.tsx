@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './style.scss';
 
 type Props = {
@@ -10,10 +10,15 @@ type Props = {
 };
 
 export function Nav({ navItems }: Props): JSX.Element {
+  const { pathname } = useLocation();
   return (
     <nav className="Nav">
       {navItems.map((item, index) => (
-        <Link to={item.path} key={index}>
+        <Link
+          className={`${pathname === item.path ? 'u-bg-green' : ''}`}
+          to={item.path}
+          key={index}
+        >
           {item.name}
         </Link>
       ))}
