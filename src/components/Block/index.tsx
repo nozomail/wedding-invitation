@@ -1,32 +1,32 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import './style.scss';
 
 type Props = {
-  size?: 'small' | 'medium' | 'large' | 'xlarge';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   type?: 'around' | 'vertical' | 'horizontal' | 'top' | 'bottom' | 'left' | 'right';
   isColor?: boolean;
   isBorder?: boolean;
   isRoundCorner?: boolean;
-  isCenterContent?: boolean;
-  children: ReactNode;
+  justifyContent?: 'center' | 'between';
+  children: React.ReactNode;
 };
 
 export function Block({
   type = 'around',
-  size = 'medium',
+  size = 'md',
   isColor = false,
   isBorder = false,
   isRoundCorner = false,
-  isCenterContent = false,
+  justifyContent = undefined,
   children,
 }: Props): JSX.Element {
   const color = isColor ? ' -color' : '';
   const border = isBorder ? ' -border' : '';
   const roundCorner = isRoundCorner ? ' -roundCorner' : '';
-  const center = isCenterContent ? ' -center' : '';
+  const content = justifyContent ? ` -${justifyContent}` : '';
 
   return (
-    <div className={`Block -${type} -${size}${color}${border}${roundCorner}${center}`}>
+    <div className={`Block -${type} -${size}${color}${border}${roundCorner}${content}`}>
       {children}
     </div>
   );

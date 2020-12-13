@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import './style.scss';
 
 type Props = {
   title: string;
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 export function IndentSection({ title, children }: Props): JSX.Element {

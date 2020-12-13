@@ -114,7 +114,7 @@ export function Honeymoon(): JSX.Element {
   return (
     <div className="Honeymoon">
       <Card title="Honeymoon Contribution">
-        <Block type="bottom" size="large">
+        <Block type="bottom" size="lg">
           <Text>
             We are so excited to have our big day in the beautiful country, New Zealand! Please do
             not bring gifts as we will not be able to take them back to Japan with us. We know many
@@ -125,13 +125,13 @@ export function Honeymoon(): JSX.Element {
         </Block>
 
         <Section title="BANK ACCOUNT INFO" icon="bank">
-          <Block size="large" isColor isBorder>
+          <Block size="lg" isColor isBorder>
             <Text isCenter>NOZOMI MAIL</Text>
             <Text isCenter>01-2345-6789-00</Text>
           </Block>
         </Section>
 
-        <Block type="top" size="xlarge">
+        <Block type="top" size="xl">
           <Text>Here's a snapshot of our Italian honeymoon plan!</Text>
         </Block>
 

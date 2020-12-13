@@ -9,8 +9,9 @@ html {
 body {
   height: 100%;
   margin: 0;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.75;
+  letter-spacing: $ls_md;
   color: $c_black;
   background: url('@assets/images/bg.png') repeat;
 }

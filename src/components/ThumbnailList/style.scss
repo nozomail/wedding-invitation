@@ -1,3 +1,5 @@
+@import '@styles/variables';
+
 .ThumbnailList {
   display: flex;
   flex-wrap: wrap;
@@ -7,7 +9,7 @@
 .ThumbnailList_item {
   width: calc(50% - 10px);
   padding-top: calc(50% - 10px);
-  border-radius: 6px;
+  border-radius: $br_sm;
   background: center center / cover no-repeat;
   position: relative;
   overflow: hidden;

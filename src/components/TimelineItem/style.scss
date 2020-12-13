@@ -1,6 +1,7 @@
 @import '@styles/variables';
 .TimelineItem {
   display: flex;
+  letter-spacing: normal;
   margin-top: 10px;
 
   + .TimelineItem {

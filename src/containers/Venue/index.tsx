@@ -43,7 +43,7 @@ export function Venue(): JSX.Element {
             Please show the invitation page of this website to the Fullers staff to get a 10%
             discount. (Discount is not available for online purchase)
           </Text>
-          <Block type="vertical" size="small">
+          <Block type="vertical" size="sm">
             <IndentSection title="TIMETABLE">
               <TextLink
                 url="https://www.fullers.co.nz/timetables-and-fares/?from=AUCK&to=WAIH"
@@ -63,7 +63,7 @@ export function Venue(): JSX.Element {
             3.50 pm (or the arrival time of the 3.00 pm ferry from Auckland). If you would prefer to
             take a different means of transportation, please arrange this on your own.
           </Text>
-          <Block type="top" size="small">
+          <Block type="top" size="sm">
             <IndentSection title="WALKING">
               <Text>Takes approximately 30 – 40 minutes via the road.</Text>
             </IndentSection>
@@ -71,7 +71,7 @@ export function Venue(): JSX.Element {
               <Text>
                 Often busy during this time. Please enquire if you need to book in advance.
               </Text>
-              <Block type="top" size="small">
+              <Block type="top" size="sm">
                 <TextLink url="tel:0800372200" icon="phone">
                   Waiheke Executive Transport
                 </TextLink>
@@ -88,8 +88,10 @@ export function Venue(): JSX.Element {
         </Section>
       </Card>
 
-      <Block type="top" size="large">
-        <Button type="primary" text="RSVP" icon="pen" />
+      <Block type="top" size="lg">
+        <Button type="primary" icon="pen">
+          RSVP
+        </Button>
       </Block>
     </div>
   );

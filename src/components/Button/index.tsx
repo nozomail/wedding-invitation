@@ -3,17 +3,17 @@ import './style.scss';
 
 type Props = {
   type: 'primary' | 'secondary';
-  text: string;
   icon?: 'pen' | 'plane' | 'plus' | 'lock';
   onClick?: React.MouseEventHandler<HTMLElement>;
+  children: React.ReactNode;
 };
 
-export function Button({ type, text, icon, onClick }: Props): JSX.Element {
+export function Button({ type, icon, children, ...rest }: Props): JSX.Element {
   const buttonStyle = icon ? ` -icon -${icon}` : '';
 
   return (
-    <button type="button" className={`Button -${type}${buttonStyle}`} onClick={onClick}>
-      <span>{text}</span>
+    <button type="button" className={`Button -${type}${buttonStyle}`} {...rest}>
+      <span>{children}</span>
     </button>
   );
 }

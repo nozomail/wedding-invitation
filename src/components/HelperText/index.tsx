@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import './style.scss';
 
 type Props = {
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 export function HelperText({ children }: Props): JSX.Element {

@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import './style.scss';
 
 type Props = {
   url: string;
   icon?: 'arrow' | 'email' | 'map' | 'phone';
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 export function TextLink({ url, icon, children }: Props): JSX.Element {

@@ -24,17 +24,31 @@ export function Login(): JSX.Element {
 
   return (
     <div className="Login">
-      <Block type="bottom" size="xlarge" isCenterContent>
+      <Block type="bottom" size="xl" justifyContent="center">
         <img className="Login_image" src={img} alt="Nozomi & Matthew 01.01.2020" />
       </Block>
       <InputField label="EMAIL">
-        <Input type="email" value={email} onChange={setEmail} />
+        <Input
+          type="email"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
       </InputField>
       <InputField label="PASSWORD">
-        <Input type="password" value={password} onChange={setPassword} />
+        <Input
+          type="password"
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
       </InputField>
-      <Block type="top" size="xlarge">
-        <Button type="primary" text="OPEN" icon="lock" onClick={handleOnClick} />
+      <Block type="top" size="xl">
+        <Button type="primary" icon="lock" onClick={handleOnClick}>
+          OPEN
+        </Button>
       </Block>
     </div>
   );

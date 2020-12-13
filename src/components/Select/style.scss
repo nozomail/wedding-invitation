@@ -5,7 +5,7 @@
   width: 100%;
   height: 40px;
   border: 1px solid $c_gray;
-  border-radius: 6px;
+  border-radius: $br_sm;
   background: {
     image: url('./assets/icon_arrow-down.svg');
     size: 12px 12px;

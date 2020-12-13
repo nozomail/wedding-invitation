@@ -4,7 +4,7 @@
   display: block;
   width: 100%;
   border: 1px solid $c_gray;
-  border-radius: 6px;
+  border-radius: $br_sm;
 
   &:focus {
     border-color: $c_red;

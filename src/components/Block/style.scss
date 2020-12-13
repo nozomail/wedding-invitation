@@ -2,10 +2,11 @@
 
 .Block {
   $sizes: (
-    'small': 10,
-    'medium': 20,
-    'large': 30,
-    'xlarge': 40,
+    'xs': 5,
+    'sm': 10,
+    'md': 20,
+    'lg': 30,
+    'xl': 40,
   );
   $positions: 'top', 'right', 'bottom', 'left';
 
@@ -52,11 +53,16 @@
   }
 
   &.-roundCorner {
-    border-radius: 6px;
+    border-radius: $br_sm;
   }
 
   &.-center {
     display: flex;
     justify-content: center;
+  }
+
+  &.-between {
+    display: flex;
+    justify-content: space-between;
   }
 }

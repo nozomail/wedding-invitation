@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import './style.scss';
 
 type Props = {
   isCenter?: boolean;
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 export function Text({ isCenter = false, children }: Props): JSX.Element {

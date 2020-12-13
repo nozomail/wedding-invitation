@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import './style.scss';
 
 type Props = {
-  label: string;
+  label?: string;
   isRequired?: boolean;
   isQuestion?: boolean;
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 export function InputField({
@@ -15,11 +15,13 @@ export function InputField({
   children,
 }: Props): JSX.Element {
   return (
-    <div className={`InputField ${isQuestion ? '-question' : ''}`}>
-      <div className="InputField_label">
-        {label}
-        {isRequired && <span className="InputField_required">*Required</span>}
-      </div>
+    <div className={`InputField${isQuestion ? ' -question' : ''}`}>
+      {label && (
+        <div className="InputField_label">
+          {label}
+          {isRequired && <span className="InputField_required">*REQUIRED</span>}
+        </div>
+      )}
       {children}
     </div>
   );

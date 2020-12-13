@@ -1,0 +1,17 @@
+@import './variables';
+
+.u-text-red {
+  color: $c_red;
+}
+
+.u-bold {
+  font-weight: $fw_bold;
+}
+
+.u-underline {
+  text-decoration: underline;
+}
+
+.u-pointer {
+  cursor: pointer;
+}

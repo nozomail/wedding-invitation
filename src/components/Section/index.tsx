@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import './style.scss';
 
 type Props = {
   title: string;
   icon?: 'grape' | 'ribbon' | 'bank';
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 export function Section({ title, icon, children }: Props): JSX.Element {

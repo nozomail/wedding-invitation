@@ -5,9 +5,9 @@
   align-items: center;
   justify-content: center;
   font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-weight: $fw_bold;
   line-height: 20px;
+  letter-spacing: $ls_md;
   border: none;
   margin: 0 auto;
   cursor: pointer;
