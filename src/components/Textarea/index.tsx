@@ -4,8 +4,10 @@ import './style.scss';
 type Props = {
   rows?: number;
   name?: string;
+  value?: string;
+  onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
 };
 
-export function Textarea({ rows = 4 }: Props): JSX.Element {
-  return <textarea className="Textarea" rows={rows}></textarea>;
+export function Textarea({ rows = 4, ...rest }: Props): JSX.Element {
+  return <textarea className="Textarea" rows={rows} {...rest}></textarea>;
 }
