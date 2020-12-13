@@ -1,0 +1,62 @@
+@import '@styles/variables';
+
+.Checkbox {
+  display: block;
+  cursor: pointer;
+
+  + .Checkbox {
+    margin-top: 14px;
+  }
+
+  .Checkbox_label + & {
+    margin-top: 10px;
+  }
+
+  input[type='checkbox']:checked + .Checkbox_label {
+    color: $c_red;
+
+    &::before {
+      border-color: $c_red;
+    }
+
+    &::after {
+      display: block;
+      width: 16px;
+      height: 10px;
+      content: '';
+      border: {
+        style: solid;
+        width: 0 0 2px 2px;
+        color: $c_red;
+      }
+      transform: rotate(-45deg);
+      position: absolute;
+      top: 0;
+      left: 6px;
+      bottom: 6px;
+      margin: auto;
+    }
+  }
+}
+
+.Checkbox_label {
+  display: block;
+  font-size: 14px;
+  position: relative;
+  padding: 10px 10px 10px 40px;
+
+  &::before {
+    display: block;
+    width: 28px;
+    height: 28px;
+    content: '';
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}
