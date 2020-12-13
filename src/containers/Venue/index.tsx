@@ -89,7 +89,7 @@ export function Venue(): JSX.Element {
       </Card>
 
       <Block type="top" size="lg">
-        <Button type="primary" icon="pen">
+        <Button color="primary" icon="pen">
           RSVP
         </Button>
       </Block>

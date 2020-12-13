@@ -4,6 +4,7 @@ import './style.scss';
 type Props = {
   name?: string;
   value?: any;
+  required?: boolean;
   onChange?: React.ChangeEventHandler<HTMLSelectElement>;
   children: React.ReactNode;
 };

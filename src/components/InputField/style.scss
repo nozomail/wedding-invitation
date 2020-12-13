@@ -1,6 +1,8 @@
 @import '@styles/variables';
 
 .InputField {
+  position: relative;
+
   + .InputField {
     margin-top: 20px;
   }

@@ -1,0 +1,10 @@
+@import '@styles/variables';
+@import '@styles/functions';
+
+.Rsvp_thanks {
+  font-family: 'Great Vibes';
+  font-size: vw(15);
+  color: $c_red;
+  text-align: center;
+  padding-top: 100px;
+}

@@ -5,6 +5,7 @@ type Props = {
   name: string;
   label: string;
   value?: string;
+  required?: boolean;
 };
 
 export function RadioButton({ label, ...rest }: Props): JSX.Element {

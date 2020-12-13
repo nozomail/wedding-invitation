@@ -5,6 +5,7 @@ type Props = {
   type?: 'text' | 'email' | 'password' | 'tel' | 'number';
   name?: string;
   value?: string;
+  required?: boolean;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 };
 

@@ -46,7 +46,7 @@ export function Login(): JSX.Element {
         />
       </InputField>
       <Block type="top" size="xl">
-        <Button type="primary" icon="lock" onClick={handleOnClick}>
+        <Button color="primary" icon="lock" onClick={handleOnClick}>
           OPEN
         </Button>
       </Block>

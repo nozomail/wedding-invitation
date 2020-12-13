@@ -5,6 +5,7 @@ type Props = {
   rows?: number;
   name?: string;
   value?: string;
+  required?: boolean;
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
 };
 
