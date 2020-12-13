@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import './style.scss';
 
 import { CardEnvelope } from '@components/CardEnvelope';
+import { Button } from '@components/Button';
 
 const guests = [
   {
@@ -36,16 +37,16 @@ export function Envelope(): JSX.Element {
   useEffect(() => {
     const timer1 = setTimeout(() => {
       setCardState('is-flipped');
-    }, 5000);
+    }, 4000);
     const timer2 = setTimeout(() => {
       setCardState('is-flipped is-open');
-    }, 7000);
+    }, 6000);
     const timer3 = setTimeout(() => {
       setCardState('is-flipped is-open is-pulled');
-    }, 9000);
+    }, 8000);
     const timer4 = setTimeout(() => {
       history.push('/invitation');
-    }, 12000);
+    }, 11000);
 
     return () => {
       clearTimeout(timer1);
@@ -58,6 +59,16 @@ export function Envelope(): JSX.Element {
   return (
     <div className="Envelope" style={{ height: `${height}px` }}>
       <CardEnvelope guests={guests} cardState={cardState}></CardEnvelope>
+      <div className="Envelope_skip">
+        <Button
+          color="secondary"
+          onClick={() => {
+            history.push('/invitation');
+          }}
+        >
+          Skip
+        </Button>
+      </div>
     </div>
   );
 }
