@@ -37,7 +37,7 @@ const navItems = [
   },
   {
     name: 'ENVELOPE',
-    path: '/envelope',
+    path: '/',
   },
 ];
 
@@ -55,7 +55,7 @@ export function App(): JSX.Element {
         <div className="App_main">
           <Switch>
             <Route exact path="/login" component={Login} />
-            <PrivateRoute exact path="/envelope" component={Envelope} />
+            <PrivateRoute exact path="/" component={Envelope} />
             <PrivateRoute exact path="/invitation" component={Invitation} />
             <PrivateRoute exact path="/venue" component={Venue} />
             <PrivateRoute exact path="/rsvp" component={Rsvp} />
@@ -63,7 +63,7 @@ export function App(): JSX.Element {
             <PrivateRoute exact path="/honeymoon" component={Honeymoon} />
           </Switch>
         </div>
-        {location.pathname !== '/login' && location.pathname !== '/envelope' && (
+        {location.pathname !== '/login' && location.pathname !== '/' && (
           <div className="App_nav">
             <Nav navItems={navItems}></Nav>
           </div>

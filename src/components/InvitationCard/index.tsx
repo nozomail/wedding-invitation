@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './style.scss';
 
 import { HelperText } from '@components/HelperText';
@@ -45,9 +46,9 @@ export function InvitationCard({ guests }: Props): JSX.Element {
       <span className="InvitationCard_rsvp">PLEASE RSVP BY NOVEMBER 15TH</span>
       <HelperText>
         PLEASE CHECK{' '}
-        <a href="/venue" className="InvitationCard_link">
+        <Link to="/venue" className="InvitationCard_link">
           VENUE INFO &amp; MAP
-        </a>{' '}
+        </Link>{' '}
         BEFORE COMPLETING YOUR RSVP
       </HelperText>
       <HelperText>EARLY RESERVATIONS ARE APPRECIATED</HelperText>

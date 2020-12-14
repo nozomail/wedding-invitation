@@ -19,7 +19,7 @@ export function Login(): JSX.Element {
 
   function handleOnClick(): void {
     login();
-    history.push('/envelope');
+    history.push('/');
   }
 
   return (
