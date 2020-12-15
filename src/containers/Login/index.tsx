@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+// import { useHistory } from 'react-router-dom';
 import './style.scss';
 
 import { InputField } from '@components/InputField';
@@ -15,12 +15,6 @@ export function Login(): JSX.Element {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useAuthContext();
-  const history = useHistory();
-
-  function handleOnClick(): void {
-    login();
-    history.push('/');
-  }
 
   return (
     <div className="Login">
@@ -46,7 +40,7 @@ export function Login(): JSX.Element {
         />
       </InputField>
       <Block type="top" size="xl">
-        <Button color="primary" icon="lock" onClick={handleOnClick}>
+        <Button color="primary" icon="lock" onClick={() => login(email, password)}>
           OPEN
         </Button>
       </Block>

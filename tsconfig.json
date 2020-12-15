@@ -17,6 +17,7 @@
       "@containers/*": ["src/containers/*"],
       "@hooks/*": ["src/hooks/*"],
       "@context/*": ["src/context/*"],
+      "@services/*": ["src/services/*"],
       "@styles/*": ["src/styles/*"]
     }
   },

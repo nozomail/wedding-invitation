@@ -1,6 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
@@ -52,6 +53,7 @@ module.exports = {
       '@containers': path.resolve(__dirname, 'src/containers/'),
       '@context': path.resolve(__dirname, 'src/context/'),
       '@hooks': path.resolve(__dirname, 'src/hooks/'),
+      '@services': path.resolve(__dirname, 'src/services/'),
       '@styles': path.resolve(__dirname, 'src/styles/'),
     },
   },
@@ -63,5 +65,6 @@ module.exports = {
       template: 'src/index.html',
       filename: 'index.html',
     }),
+    new Dotenv(),
   ],
 };

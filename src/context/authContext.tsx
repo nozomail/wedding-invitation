@@ -1,35 +1,80 @@
-import React, { createContext, useState, ReactNode } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { auth, database } from '@services/firebase';
 
-export type authContextProps =
+export type contextProps =
   | {
-      user: string | null;
-      login: () => void;
+      isChecking: boolean;
+      user: userProps | null;
+      login: (email: string, password: String) => void;
       logout: () => void;
     }
   | undefined;
 
-type AuthContextProviderProps = {
-  children: ReactNode;
+type userProps = {
+  recipients: {
+    firstName: string;
+    lastName: string;
+    title: string;
+  }[];
+  haveKids: boolean;
+} | null;
+
+type contextProviderProps = {
+  children: React.ReactNode;
 };
 
-export const authContext = createContext<authContextProps>(undefined);
+export const context = createContext<contextProps>(undefined);
 
-export function AuthContextProvider({ children }: AuthContextProviderProps): JSX.Element {
-  const [user, setUser] = useState<string | null>('user');
+export function AuthContextProvider({ children }: contextProviderProps): JSX.Element {
+  const [isChecking, setIsChecking] = useState(true);
+  const [user, setUser] = useState<userProps | null>(null);
+  const history = useHistory();
 
-  const login = () => {
-    setUser('user');
+  const login = (email: string, password: string) => {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => history.push('/'))
+      .catch((error) => console.log(error));
   };
 
   const logout = () => {
-    setUser(null);
+    auth.signOut().then(() => {
+      setUser(null);
+      history.push('/login');
+    });
   };
 
-  const auth = {
+  const value = {
+    isChecking,
     user,
     login,
     logout,
   };
 
-  return <authContext.Provider value={auth}>{children}</authContext.Provider>;
+  useEffect(() => {
+    auth.onAuthStateChanged((data) => {
+      if (data) {
+        database
+          .collection('users')
+          .doc(data.uid)
+          .get()
+          .then((doc) => {
+            if (doc.exists) {
+              setUser(doc.data() as userProps);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+          .then(() => {
+            setIsChecking(false);
+          });
+      } else {
+        logout();
+      }
+    });
+  }, []);
+
+  return <context.Provider value={value}>{children}</context.Provider>;
 }
