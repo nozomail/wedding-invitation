@@ -3,7 +3,7 @@ import { Switch, Route, useLocation } from 'react-router-dom';
 import './style.scss';
 
 import { Nav } from '@components/Nav';
-import { PrivateRoute } from '@components/PrivateRoute';
+import { PrivateRoute } from '@containers/PrivateRoute';
 import { Login } from '@containers/Login';
 import { Envelope } from '@containers/Envelope';
 import { Invitation } from '@containers/Invitation';

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
+import { Loader } from '@components/loader';
 import { useAuthContext } from '@hooks/useAuthContext';
 
 type Props = {
@@ -11,6 +12,11 @@ type Props = {
 
 export function PrivateRoute({ component: Component, ...rest }: Props): JSX.Element {
   const auth = useAuthContext();
+
+  if (auth.isChecking) {
+    return <Loader />;
+  }
+
   return (
     <Route
       {...rest}
