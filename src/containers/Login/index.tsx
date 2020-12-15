@@ -14,10 +14,16 @@ import img from './assets/front.png';
 export function Login(): JSX.Element {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const { login } = useAuthContext();
 
+  function handleSubmit(e: React.MouseEvent<HTMLElement | MouseEvent>) {
+    e.preventDefault();
+    login(email, password, setError);
+  }
+
   return (
-    <div className="Login">
+    <form className="Login">
       <Block type="bottom" size="xl" justifyContent="center">
         <img className="Login_image" src={img} alt="Nozomi & Matthew 01.01.2020" />
       </Block>
@@ -39,11 +45,14 @@ export function Login(): JSX.Element {
           }}
         />
       </InputField>
+      <Block type="top" size="md">
+        <div className="u-text-red">{error}</div>
+      </Block>
       <Block type="top" size="xl">
-        <Button color="primary" icon="lock" onClick={() => login(email, password)}>
+        <Button type="submit" color="primary" icon="lock" onClick={(e) => handleSubmit(e)}>
           OPEN
         </Button>
       </Block>
-    </div>
+    </form>
   );
 }

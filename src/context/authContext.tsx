@@ -6,7 +6,11 @@ export type contextProps =
   | {
       isChecking: boolean;
       user: userProps | null;
-      login: (email: string, password: String) => void;
+      login: (
+        email: string,
+        password: String,
+        setError: React.Dispatch<React.SetStateAction<String>>,
+      ) => void;
       logout: () => void;
     }
   | undefined;
@@ -31,11 +35,17 @@ export function AuthContextProvider({ children }: contextProviderProps): JSX.Ele
   const [user, setUser] = useState<userProps | null>(null);
   const history = useHistory();
 
-  const login = (email: string, password: string) => {
+  const login = (
+    email: string,
+    password: string,
+    setError: React.Dispatch<React.SetStateAction<String>>,
+  ) => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(() => history.push('/'))
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setError(error.message);
+      });
   };
 
   const logout = () => {
