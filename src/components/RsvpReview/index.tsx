@@ -24,9 +24,11 @@ export function RsvpReview({ rsvp }: props): JSX.Element {
 
   return (
     <div className="RsvpReview">
-      <div className="RsvpReview_answer">{rsvp.rsvp ? LABEL.rsvpYes : LABEL.rsvpNo}</div>
+      <div className="RsvpReview_answer">
+        {rsvp.attendance === 'yes' ? LABEL.attendanceYes : LABEL.attendanceNo}
+      </div>
       <div className="RsvpReview_thanks">Thank you!</div>
-      {rsvp.rsvp ? (
+      {rsvp.attendance === 'yes' ? (
         <div className="RsvpReview_body">
           <dl className="RsvpReview_item">
             <dt>GUEST(S)</dt>
@@ -45,19 +47,21 @@ export function RsvpReview({ rsvp }: props): JSX.Element {
               return (
                 <dl className="RsvpReview_item" key={index}>
                   <dt>{LABEL[item]}</dt>
-                  <dd>{formatData(rsvp[item])}</dd>
+                  <dd>{rsvp[item] === '' ? '-' : formatData(rsvp[item])}</dd>
                 </dl>
               );
             }
           })}
         </div>
       ) : (
-        <div>
-          <dl className="RsvpReview_item">
-            <dt>MESSAGE</dt>
-            <dd>{formatData(rsvp.message)}</dd>
-          </dl>
-        </div>
+        rsvp.message !== '' && (
+          <div>
+            <dl className="RsvpReview_item">
+              <dt>MESSAGE</dt>
+              <dd>{formatData(rsvp.message)}</dd>
+            </dl>
+          </div>
+        )
       )}
       <div>
         <div></div>

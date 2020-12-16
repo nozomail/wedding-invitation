@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, SetStateAction } from 'react';
 
 import { auth, database } from '@services/firebase';
 import { UserProps, RsvpProps } from '@propTypes/user';
@@ -6,7 +6,7 @@ import { UserProps, RsvpProps } from '@propTypes/user';
 export type contextProps = {
   isLoading: boolean;
   user: UserProps;
-  submitRsvp: (rsvp: RsvpProps) => void;
+  submitRsvp: (rsvp: RsvpProps, setIsEditting: React.Dispatch<SetStateAction<boolean>>) => void;
 };
 
 type ContextProviderProps = {
@@ -20,10 +20,15 @@ export function UserContextProvider({ children }: ContextProviderProps): JSX.Ele
   const [uid, setUid] = useState<string | null>(null);
   const [user, setUser] = useState<UserProps | null>(null);
 
-  const submitRsvp = (rsvp: RsvpProps) => {
+  const submitRsvp = (rsvp: RsvpProps, setIsEditting: React.Dispatch<SetStateAction<boolean>>) => {
     if (uid) {
-      setIsLoading(true);
-      database.collection('users').doc(uid).update({ rsvp });
+      database
+        .collection('users')
+        .doc(uid)
+        .update({ rsvp })
+        .then(() => {
+          setIsEditting(false);
+        });
     }
   };
 

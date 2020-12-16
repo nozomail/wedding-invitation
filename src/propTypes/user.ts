@@ -10,7 +10,7 @@ export type UserProps = {
 
 export type RsvpProps = {
   [key: string]: any;
-  rsvp: boolean;
+  attendance: string;
   guests?: GuestProps[];
   address?: string;
   postcode?: string;
@@ -18,7 +18,8 @@ export type RsvpProps = {
   stay?: string;
   stayAddress?: string;
   bbq?: string;
-  message: string;
+  question?: string;
+  message?: string;
 };
 
 export type GuestProps = {

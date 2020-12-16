@@ -5,6 +5,8 @@ type Props = {
   name: string;
   label: string;
   value?: string;
+  checked?: boolean;
+  defaultChecked?: boolean;
   required?: boolean;
 };
 

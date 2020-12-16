@@ -1,14 +1,14 @@
 export const LABEL: {
   [key: string]: string;
 } = {
+  attendanceYes: 'ACCEPT WITH PLEASURE',
+  attendanceNo: 'DICLINE WITH REGRET',
   firstName: 'FIRST NAME',
   lastName: 'LAST NAME',
   title: 'TITLE',
   titleOther: 'PLEASE SPECIFY',
   kidsMenu: 'KIDS MENU PREFERRED',
   diet: 'DIETARY RESTRICTIONS',
-  rsvpYes: 'ACCEPT WITH PLEASURE',
-  rsvpNo: 'DICLINE WITH REGRET',
   address: 'POSTAL ADDRESS',
   postcode: 'POSTCODE',
   phone: 'PHONE NUMBER',
@@ -16,7 +16,7 @@ export const LABEL: {
   stay: 'ARE YOU STAYING ON WAIHEKE ISLAND AFTER THE RECEPTION?',
   stayAddress: 'LET US KNOW THE ADDRESS OF YOUR ACCOMMODATION SO WE CAN ARRANGE YOUR TRANSPORT.',
   bbq: 'WOULD YOU LIKE TO JOIN A BEACH BBQ LUNCH IN AUCKLAND ON THE DAY AFTER THE WEDDING?',
-  message: 'PLEASE LET US KNOW IF YOU HAVE ANY QUESTIONS OR COMMENTS.',
+  question: 'PLEASE LET US KNOW IF YOU HAVE ANY QUESTIONS OR COMMENTS.',
 };
 
 export const RSVP_ITEMS = Object.keys(LABEL);
@@ -31,7 +31,6 @@ export const GUEST_INFO = {
 };
 
 export const CONTROLLED_INPUT = [
-  'rsvp',
   'firstName',
   'lastName',
   'title',

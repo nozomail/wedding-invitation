@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Card } from '@components/Card';
 import { Block } from '@components/Block';
@@ -18,10 +18,12 @@ import { LABEL, GUEST_INFO, CONTROLLED_INPUT } from '@constants/rsvp';
 import deleteIcon from './assets/icon_delete.svg';
 
 export function Rsvp(): JSX.Element {
-  const [rsvp, setRsvp] = useState<boolean | null>(null);
-  const [isStaying, setIsStaying] = useState(false);
+  const [isEditting, setIsEditting] = useState(false);
+  const [attendance, setAttendance] = useState('');
+  const [stay, setStay] = useState('');
   const [guestList, setGuestList] = useState<GuestProps[]>([{ ...GUEST_INFO }]);
   const { user, submitRsvp } = useUserContext();
+  const rsvp = user.rsvp;
 
   function handleGuestInfoChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
@@ -39,7 +41,7 @@ export function Rsvp(): JSX.Element {
 
   function handleRadioButtonsOnly(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.type !== 'radio') return;
-    setIsStaying(e.target.value === 'yes');
+    setStay(e.target.value);
   }
 
   function addGuest() {
@@ -54,6 +56,7 @@ export function Rsvp(): JSX.Element {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
+
     for (const name of CONTROLLED_INPUT) {
       formData.delete(name);
     }
@@ -61,35 +64,62 @@ export function Rsvp(): JSX.Element {
     for (const [key, value] of formData) {
       data[key] = value;
     }
-    data.rsvp = rsvp;
-    if (rsvp) {
+    if (attendance === 'yes') {
       data.guests = guestList;
+    } else {
+      delete data.guests;
     }
-    submitRsvp(data as RsvpProps);
+    submitRsvp(data as RsvpProps, setIsEditting);
   }
+
+  function handleEdit() {
+    setIsEditting(true);
+    setAttendance(rsvp.attendance);
+    setStay(rsvp.stay);
+    setGuestList(rsvp.guests ? rsvp.guests : [{ ...GUEST_INFO }]);
+  }
+
+  useEffect(() => {
+    document.querySelector('.App').scrollTo(0, 0);
+  }, [isEditting]);
 
   return (
     <div className="Rsvp">
-      {user.rsvp ? (
-        <Card title="RSVP">
-          <RsvpReview rsvp={user.rsvp} />
-        </Card>
+      {rsvp && !isEditting ? (
+        <div>
+          <Card title="RSVP">
+            <RsvpReview rsvp={rsvp} />
+          </Card>
+          <Block type="top" size="lg">
+            <Button color="primary" icon="pen" onClick={handleEdit}>
+              EDIT
+            </Button>
+          </Block>
+        </div>
       ) : (
         <form onSubmit={handleSubmit}>
           <Card title="RSVP">
             <Block justifyContent="center">
               <div
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setRsvp(e.target.value === 'yes')
-                }
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAttendance(e.target.value)}
               >
-                <RadioButton name="rsvp" label={LABEL.rsvpYes} value="yes" />
-                <RadioButton name="rsvp" label={LABEL.rsvpNo} value="no" />
+                <RadioButton
+                  name="attendance"
+                  label={LABEL.attendanceYes}
+                  value="yes"
+                  defaultChecked={rsvp?.attendance === 'yes'}
+                />
+                <RadioButton
+                  name="attendance"
+                  label={LABEL.attendanceNo}
+                  value="no"
+                  defaultChecked={rsvp?.attendance === 'no'}
+                />
               </div>
             </Block>
 
-            {rsvp !== null &&
-              (rsvp ? (
+            {attendance !== '' &&
+              (attendance === 'yes' ? (
                 <div>
                   {guestList.map((guest, i) => (
                     <Block type="vertical" size="sm" key={i}>
@@ -125,7 +155,7 @@ export function Rsvp(): JSX.Element {
                         <InputField label={LABEL.title} isRequired>
                           <Select
                             name="title"
-                            defaultValue=""
+                            defaultValue={guest.title}
                             onChange={(e) => handleGuestInfoChange(e, i)}
                             required
                           >
@@ -177,18 +207,34 @@ export function Rsvp(): JSX.Element {
                   </Block>
 
                   <InputField label={LABEL.address} isRequired>
-                    <Textarea name="address" required></Textarea>
+                    <Textarea name="address" defaultValue={rsvp?.address} required></Textarea>
                   </InputField>
                   <InputField label={LABEL.postcode} isRequired>
-                    <Input name="postcode" required />
+                    <Input name="postcode" defaultValue={rsvp?.postcode} required />
                   </InputField>
                   <InputField label={LABEL.phone} isRequired>
-                    <Input name="phone" required />
+                    <Input name="phone" defaultValue={rsvp?.phone} required />
                   </InputField>
                   <InputField label={LABEL.bus} isRequired>
-                    <RadioButton name="bus" label="YES" value="yes" required />
-                    <RadioButton name="bus" label="NO" value="no" />
-                    <RadioButton name="bus" label="NOT SURE YET" value="unknown" />
+                    <RadioButton
+                      name="bus"
+                      label="YES"
+                      value="yes"
+                      defaultChecked={rsvp?.bus === 'yes'}
+                      required
+                    />
+                    <RadioButton
+                      name="bus"
+                      label="NO"
+                      value="no"
+                      defaultChecked={rsvp?.bus === 'no'}
+                    />
+                    <RadioButton
+                      name="bus"
+                      label="NOT SURE YET"
+                      value="unknown"
+                      defaultChecked={rsvp?.bus === 'unknown'}
+                    />
                   </InputField>
                   <InputField label={LABEL.stay} isRequired>
                     <div
@@ -196,40 +242,79 @@ export function Rsvp(): JSX.Element {
                         handleRadioButtonsOnly(e)
                       }
                     >
-                      <RadioButton name="stay" label="YES" value="yes" required />
-                      {isStaying && (
+                      <RadioButton
+                        name="stay"
+                        label="YES"
+                        value="yes"
+                        defaultChecked={rsvp?.stay === 'yes'}
+                        required
+                      />
+                      {stay === 'yes' && (
                         <InputField label={LABEL.stayAddress}>
-                          <Input name="stayAddress" />
+                          <Input name="stayAddress" defaultValue={rsvp?.stayAddress} />
                         </InputField>
                       )}
-                      <RadioButton name="stay" label="NO" value="no" />
-                      <RadioButton name="stay" label="NOT SURE YET" value="unknown" />
+                      <RadioButton
+                        name="stay"
+                        label="NO"
+                        value="no"
+                        defaultChecked={rsvp?.stay === 'no'}
+                      />
+                      <RadioButton
+                        name="stay"
+                        label="NOT SURE YET"
+                        value="unknown"
+                        defaultChecked={rsvp?.stay === 'unknown'}
+                      />
                     </div>
                   </InputField>
                   <InputField label={LABEL.bbq} isRequired>
-                    <RadioButton name="bbq" label="YES" value="yes" required />
-                    <RadioButton name="bbq" label="NO" value="no" />
-                    <RadioButton name="bbq" label="NOT SURE YET" value="unknown" />
+                    <RadioButton
+                      name="bbq"
+                      label="YES"
+                      value="yes"
+                      defaultChecked={rsvp?.bbq === 'yes'}
+                      required
+                    />
+                    <RadioButton
+                      name="bbq"
+                      label="NO"
+                      value="no"
+                      defaultChecked={rsvp?.bbq === 'no'}
+                    />
+                    <RadioButton
+                      name="bbq"
+                      label="NOT SURE YET"
+                      value="unknown"
+                      defaultChecked={rsvp?.bbq === 'unknown'}
+                    />
                   </InputField>
-                  <InputField label={LABEL.message}>
-                    <Textarea name="message"></Textarea>
+                  <InputField label={LABEL.question}>
+                    <Textarea name="question" defaultValue={rsvp?.question}></Textarea>
                   </InputField>
                 </div>
               ) : (
                 <div>
                   <Block type="top" size="md">
                     <InputField label="MESSAGE">
-                      <Textarea name="message"></Textarea>
+                      <Textarea name="message" defaultValue={rsvp?.message}></Textarea>
                     </InputField>
                   </Block>
                 </div>
               ))}
           </Card>
 
-          {rsvp !== null && (
+          {attendance !== '' && (
             <Block type="top" size="lg">
+              {rsvp && (
+                <Block type="bottom" size="md">
+                  <Button type="submit" color="secondary" onClick={() => setIsEditting(false)}>
+                    CANCEL
+                  </Button>
+                </Block>
+              )}
               <Button type="submit" color="primary" icon="plane">
-                SUBMIT
+                {rsvp ? 'UPDATE' : 'SUBMIT'}
               </Button>
             </Block>
           )}
