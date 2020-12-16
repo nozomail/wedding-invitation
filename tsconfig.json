@@ -15,6 +15,7 @@
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@containers/*": ["src/containers/*"],
+      "@constants/*": ["src/constants/*"],
       "@context/*": ["src/context/*"],
       "@hooks/*": ["src/hooks/*"],
       "@services/*": ["src/services/*"],

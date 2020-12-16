@@ -22,6 +22,7 @@ export function UserContextProvider({ children }: ContextProviderProps): JSX.Ele
 
   const submitRsvp = (rsvp: RsvpProps) => {
     if (uid) {
+      setIsLoading(true);
       database.collection('users').doc(uid).update({ rsvp });
     }
   };
@@ -33,16 +34,8 @@ export function UserContextProvider({ children }: ContextProviderProps): JSX.Ele
         database
           .collection('users')
           .doc(data.uid)
-          .get()
-          .then((doc) => {
-            if (doc.exists) {
-              setUser(doc.data() as UserProps);
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          })
-          .finally(() => {
+          .onSnapshot((doc) => {
+            setUser(doc.data() as UserProps);
             setIsLoading(false);
           });
       }
