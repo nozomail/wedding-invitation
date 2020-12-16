@@ -38,22 +38,27 @@ export function InvitationCard({ user }: Props): JSX.Element {
   return (
     <div className="InvitationCard">
       <div className="InvitationCard_host">
-        <span>Nozomi Hirai</span>
-        <span className="-and">&</span>
-        <span>Matthew Mail</span>
+        <div>Nozomi Hirai</div>
+        <div className="-and">&</div>
+        <div>Matthew Mail</div>
       </div>
-      <span>ARE DELIGHTED TO INVITE</span>
-      <div className="InvitationCard_guest">{guestNames}</div>
-      <span>TO SHARE IN THE CELEBRATION</span>
-      <span>OF THEIR MARRIAGE</span>
-      <span className="InvitationCard_julius -date">WEDNESDAY, 1 JANUARY 2020</span>
-      <span>4 O'CLOCK IN THE AFTERNOON</span>
-      <span className="InvitationCard_julius -venue">MUDBRICK VINEYARD</span>
-      <span className="InvitationCard_julius">& RESTAURANT</span>
-      <span>126 CHURCH BAY ROAD, ONEROA</span>
-      <span>WAIHEKE ISLAND, NEW ZEALAND</span>
-      <span className="InvitationCard_reception">Followed by a reception</span>
-      <span className="InvitationCard_rsvp">PLEASE RSVP BY NOVEMBER 15TH</span>
+      <div>ARE DELIGHTED TO INVITE</div>
+      <div className="InvitationCard_guest">
+        <div>{guestNames}</div>
+      </div>
+      <div>
+        <span>TO SHARE IN THE CELEBRATION</span> <span>OF THEIR MARRIAGE</span>
+      </div>
+      <div className="InvitationCard_julius -date">WEDNESDAY, 1 JANUARY 2020</div>
+      <div>4 O'CLOCK IN THE AFTERNOON</div>
+      <div>
+        <span className="InvitationCard_julius -venue">MUDBRICK VINEYARD</span>{' '}
+        <span className="InvitationCard_julius">& RESTAURANT</span>
+      </div>
+      <div>126 CHURCH BAY ROAD, ONEROA</div>
+      <div>WAIHEKE ISLAND, NEW ZEALAND</div>
+      <div className="InvitationCard_reception">Followed by a reception</div>
+      <div className="InvitationCard_rsvp">PLEASE RSVP BY NOVEMBER 15TH</div>
       <HelperText>
         PLEASE CHECK{' '}
         <Link to="/venue" className="InvitationCard_link">

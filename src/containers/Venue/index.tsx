@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Card } from '@components/Card';
 import { Section } from '@components/Section';
@@ -88,10 +89,12 @@ export function Venue(): JSX.Element {
         </Section>
       </Card>
 
-      <Block type="top" size="lg">
-        <Button color="primary" icon="pen">
-          RSVP
-        </Button>
+      <Block type="top" size="lg" justifyContent="center">
+        <Link to="/rsvp">
+          <Button color="primary" icon="pen">
+            RSVP
+          </Button>
+        </Link>
       </Block>
     </div>
   );

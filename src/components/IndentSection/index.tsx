@@ -9,7 +9,7 @@ type Props = {
 export function IndentSection({ title, children }: Props): JSX.Element {
   return (
     <section className="IndentSection">
-      <h3 className="IndentSection_title">{title}</h3>
+      <h2 className="IndentSection_title">{title}</h2>
       <div className="IndentSection_content">{children}</div>
     </section>
   );

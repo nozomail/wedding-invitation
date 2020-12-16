@@ -90,7 +90,7 @@ export function Rsvp(): JSX.Element {
           <Card title="RSVP">
             <RsvpReview rsvp={rsvp} />
           </Card>
-          <Block type="top" size="lg">
+          <Block type="top" size="lg" justifyContent="center">
             <Button color="primary" icon="pen" onClick={handleEdit}>
               EDIT
             </Button>
@@ -305,17 +305,19 @@ export function Rsvp(): JSX.Element {
           </Card>
 
           {attendance !== '' && (
-            <Block type="top" size="lg">
-              {rsvp && (
-                <Block type="bottom" size="md">
-                  <Button type="submit" color="secondary" onClick={() => setIsEditting(false)}>
-                    CANCEL
-                  </Button>
-                </Block>
-              )}
-              <Button type="submit" color="primary" icon="plane">
-                {rsvp ? 'UPDATE' : 'SUBMIT'}
-              </Button>
+            <Block type="top" size="lg" justifyContent="center">
+              <div className="u-text-center">
+                {rsvp && (
+                  <Block type="bottom" size="md" justifyContent="center">
+                    <Button type="submit" color="secondary" onClick={() => setIsEditting(false)}>
+                      CANCEL
+                    </Button>
+                  </Block>
+                )}
+                <Button type="submit" color="primary" icon="plane">
+                  {rsvp ? 'UPDATE' : 'SUBMIT'}
+                </Button>
+              </div>
             </Block>
           )}
         </form>

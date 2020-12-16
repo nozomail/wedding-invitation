@@ -32,7 +32,6 @@ input,
 button,
 textarea {
   outline: none;
-  // appearance: none;
 }
 
 input,
@@ -45,4 +44,13 @@ input[type='radio'],
 input[type='checkbox'] {
   opacity: 0;
   position: absolute;
+}
+
+a,
+button {
+  transition: opacity 0.25s;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }

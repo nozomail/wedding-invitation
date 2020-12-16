@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect, SetStateAction } from 'react
 import { auth, database } from '@services/firebase';
 import { UserProps, RsvpProps } from '@propTypes/user';
 
-export type contextProps = {
+export type ContextProps = {
   isLoading: boolean;
   user: UserProps;
   submitRsvp: (rsvp: RsvpProps, setIsEditting: React.Dispatch<SetStateAction<boolean>>) => void;
@@ -13,7 +13,7 @@ type ContextProviderProps = {
   children: React.ReactNode;
 };
 
-export const context = createContext<contextProps>(undefined);
+export const context = createContext<ContextProps>(undefined);
 
 export function UserContextProvider({ children }: ContextProviderProps): JSX.Element {
   const [isLoading, setIsLoading] = useState(true);

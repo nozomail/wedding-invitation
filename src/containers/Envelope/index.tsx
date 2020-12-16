@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import './style.scss';
 
 import { CardEnvelope } from '@components/CardEnvelope';
@@ -50,14 +50,9 @@ export function Envelope(): JSX.Element {
     <div className="Envelope" style={{ height: `${height}px` }}>
       <CardEnvelope guests={user.recipients} cardState={cardState}></CardEnvelope>
       <div className="Envelope_skip">
-        <Button
-          color="secondary"
-          onClick={() => {
-            history.push('/invitation');
-          }}
-        >
-          Skip
-        </Button>
+        <Link to="/invitation">
+          <Button color="secondary">SKIP</Button>
+        </Link>
       </div>
     </div>
   );

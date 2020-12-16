@@ -3,58 +3,65 @@
 @import '@styles/functions';
 
 .InvitationCard {
-  max-width: 600px;
+  max-width: 800px;
   text-align: center;
   background-image: url('./assets/flower1.png'), url('./assets/flower2.png');
   background-repeat: no-repeat, no-repeat;
-  background-size: vw(70) auto, vw(50) auto;
-  background-position: left vw(-10) top vw(-5), right vw(-3) bottom vw(-5);
+  background-size: vw(50) auto, vw(40) auto;
+  background-position: left top, right bottom;
   background-color: #fff;
   border-radius: $br_lg;
   box-shadow: $shadow_md;
-  padding: vw(38) vw(5) vw(30);
+  padding: vw(25) vw(8) vw(20);
   margin: 0 auto;
 
+  @include wide {
+    background-size: vw(60) auto, vw(40) auto;
+  }
+
+  div,
   span {
-    display: block;
     font-family: 'Crimson Text';
-    font-size: vw(3.4);
+    font-size: vw(3);
     line-height: 1.8;
     letter-spacing: $ls_sm;
+  }
 
-    &.InvitationCard_julius {
-      font-family: 'Julius Sans One';
-      font-size: vw(4.4);
-      color: $c_green;
-      font-weight: $fw_bold;
-      letter-spacing: $ls_sm;
+  span {
+    display: inline-block;
+  }
 
-      &.-date {
-        margin-top: vw(10);
-      }
+  .InvitationCard_julius {
+    font-family: 'Julius Sans One';
+    font-size: vw(4.4);
+    color: $c_green;
+    font-weight: $fw_bold;
+    letter-spacing: $ls_sm;
 
-      &.-venue {
-        margin-top: vw(5);
-      }
-    }
-
-    &.InvitationCard_reception {
-      font-family: 'Great Vibes';
-      font-size: vw(6);
-      color: $c_pink;
+    &.-date {
       margin-top: vw(10);
     }
 
-    &.InvitationCard_rsvp {
-      font-size: vw(3.4);
-      margin-top: vw(10);
+    &.-venue {
+      margin-top: vw(5);
     }
+  }
+
+  .InvitationCard_reception {
+    font-family: 'Great Vibes';
+    font-size: vw(6);
+    color: $c_pink;
+    margin-top: vw(10);
+  }
+
+  .InvitationCard_rsvp {
+    margin-top: vw(10);
   }
 
   .HelperText {
     width: vw(58);
     font-family: 'Crimson Text';
-    font-size: vw(2.6);
+    font-size: vw(2.4);
     text-align: left;
     margin: vw(5) auto 0;
 
@@ -65,8 +72,9 @@
 }
 
 .InvitationCard_host {
-  margin-bottom: vw(3);
+  margin-bottom: vw(6);
 
+  div,
   span {
     font-family: 'Great Vibes';
     font-size: vw(11);
@@ -81,15 +89,19 @@
 }
 
 .InvitationCard_guest {
-  border-top: 1px solid $c_lightgray;
-  border-bottom: 1px solid $c_lightgray;
-  padding: vw(2) 0;
-  margin: vw(4) 0;
+  display: flex;
+  justify-content: center;
+
+  > div {
+    border-top: 1px solid $c_lightgray;
+    border-bottom: 1px solid $c_lightgray;
+    padding: vw(3);
+    margin: vw(6) 0;
+  }
 
   span {
-    display: inline-block;
     font-family: 'Great Vibes';
-    font-size: vw(8);
+    font-size: vw(6);
     line-height: 1.5;
     color: $c_red;
 

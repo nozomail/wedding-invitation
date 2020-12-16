@@ -1,41 +1,53 @@
+@import '@styles/variables';
 @import '@styles/mixins';
 
 .Nav {
   @include wide {
     display: flex;
   }
+}
 
-  a {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    background-color: #aaa;
-    padding: 10px 20px;
-    border-bottom: 1px dashed #fff;
-    text-align: center;
-    background: {
-      image: url('./assets/icon_arrow-right.svg');
-      size: 20px 20px;
-      repeat: no-repeat;
-      position: right 10px center;
-    }
+.Nav_item {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  background-color: $c_darkgray;
+  padding: 10px 20px;
+  border-bottom: 1px dashed #fff;
+  text-align: center;
+  background: {
+    image: url('./assets/icon_arrow-right.svg');
+    size: 20px 20px;
+    repeat: no-repeat;
+    position: right 10px center;
+  }
+  transition: background-color $dur_fast;
+
+  &.-current {
+    background-color: $c_green;
+    pointer-events: none;
+  }
+
+  &:hover {
+    opacity: 1;
+    background-color: $c_darkergray;
+  }
+
+  @include wide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    background-image: none;
+    border-bottom: 0;
+    border-right: 1px dashed #fff;
+  }
+
+  &:last-child {
+    border-bottom: 0;
 
     @include wide {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-grow: 1;
-      background-image: none;
-      border-bottom: 0;
-      border-right: 1px dashed #fff;
-    }
-
-    &:last-child {
-      border-bottom: 0;
-
-      @include wide {
-        border-right: 0;
-      }
+      border-right: 0;
     }
   }
 }

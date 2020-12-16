@@ -15,9 +15,9 @@ export function Nav({ navItems }: Props): JSX.Element {
     <nav className="Nav">
       {navItems.map((item, index) => (
         <Link
-          className={`${pathname === item.path ? 'u-bg-green' : ''}`}
           to={item.path}
           key={index}
+          className={`Nav_item${item.path === pathname ? ' -current' : ''}`}
         >
           {item.name}
         </Link>

@@ -4,39 +4,18 @@ div,
 span,
 h1,
 h2,
-h3,
-h4,
 p,
 a,
 button,
 img,
-small,
-strong,
-b,
 dl,
 dt,
 dd,
-ol,
 ul,
 li,
-fieldset,
 form,
 label,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-figure,
-figcaption,
-footer,
 header,
-main,
-menu,
 nav,
 section {
   margin: 0;
@@ -47,22 +26,18 @@ section {
   font: inherit;
   vertical-align: baseline;
 }
-article,
-figcaption,
-figure,
-footer,
+
 header,
-main,
-menu,
-nav,
-section {
+nav {
   display: block;
 }
-ol,
+
 ul {
   list-style: none;
 }
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
 }

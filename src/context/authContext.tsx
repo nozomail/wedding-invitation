@@ -2,7 +2,7 @@ import React, { createContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { auth } from '@services/firebase';
 
-export type contextProps =
+export type ContextProps =
   | {
       login: (
         email: string,
@@ -13,13 +13,13 @@ export type contextProps =
     }
   | undefined;
 
-type contextProviderProps = {
+type ContextProviderProps = {
   children: React.ReactNode;
 };
 
-export const context = createContext<contextProps>(undefined);
+export const context = createContext<ContextProps>(undefined);
 
-export function AuthContextProvider({ children }: contextProviderProps): JSX.Element {
+export function AuthContextProvider({ children }: ContextProviderProps): JSX.Element {
   const history = useHistory();
 
   const login = (

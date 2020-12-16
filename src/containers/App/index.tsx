@@ -13,33 +13,7 @@ import { Timeline } from '@containers/Timeline';
 import { Honeymoon } from '@containers/Honeymoon';
 
 import { useUserContext } from '@hooks/useUserContext';
-
-const navItems = [
-  {
-    name: 'INVITAION',
-    path: '/invitation',
-  },
-  {
-    name: 'VENUE',
-    path: '/venue',
-  },
-  {
-    name: 'RSVP',
-    path: '/rsvp',
-  },
-  {
-    name: 'WEDDING DAY TIMELINE',
-    path: '/timeline',
-  },
-  {
-    name: 'HONEYMOON CONTRIBUTION',
-    path: '/honeymoon',
-  },
-  {
-    name: 'ENVELOPE',
-    path: '/',
-  },
-];
+import { NAV_ITEMS } from '@constants/nav';
 
 export function App(): JSX.Element {
   const location = useLocation();
@@ -65,7 +39,7 @@ export function App(): JSX.Element {
       </div>
       {user && location.pathname !== '/login' && location.pathname !== '/' && (
         <div className="App_nav">
-          <Nav navItems={navItems}></Nav>
+          <Nav navItems={NAV_ITEMS}></Nav>
         </div>
       )}
     </div>
