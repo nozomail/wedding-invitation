@@ -12,8 +12,7 @@ import { Rsvp } from '@containers/Rsvp';
 import { Timeline } from '@containers/Timeline';
 import { Honeymoon } from '@containers/Honeymoon';
 
-import { AuthContextProvider } from '@context/authContext';
-import { UserContextProvider } from '@context/userContext';
+import { useUserContext } from '@hooks/useUserContext';
 
 const navItems = [
   {
@@ -45,33 +44,30 @@ const navItems = [
 export function App(): JSX.Element {
   const location = useLocation();
   const appRef = useRef<HTMLDivElement | null>(null);
+  const { user } = useUserContext();
 
   useEffect(() => {
     appRef.current.scrollTo(0, 0);
   }, [location.pathname]);
 
   return (
-    <AuthContextProvider>
-      <UserContextProvider>
-        <div className="App" ref={appRef}>
-          <div className="App_main">
-            <Switch>
-              <Route exact path="/login" component={Login} />
-              <PrivateRoute exact path="/" component={Envelope} />
-              <PrivateRoute exact path="/invitation" component={Invitation} />
-              <PrivateRoute exact path="/venue" component={Venue} />
-              <PrivateRoute exact path="/rsvp" component={Rsvp} />
-              <PrivateRoute exact path="/timeline" component={Timeline} />
-              <PrivateRoute exact path="/honeymoon" component={Honeymoon} />
-            </Switch>
-          </div>
-          {location.pathname !== '/login' && location.pathname !== '/' && (
-            <div className="App_nav">
-              <Nav navItems={navItems}></Nav>
-            </div>
-          )}
+    <div className="App" ref={appRef}>
+      <div className="App_main">
+        <Switch>
+          <Route exact path="/login" component={Login} />
+          <PrivateRoute exact path="/" component={Envelope} />
+          <PrivateRoute exact path="/invitation" component={Invitation} />
+          <PrivateRoute exact path="/venue" component={Venue} />
+          <PrivateRoute exact path="/rsvp" component={Rsvp} />
+          <PrivateRoute exact path="/timeline" component={Timeline} />
+          <PrivateRoute exact path="/honeymoon" component={Honeymoon} />
+        </Switch>
+      </div>
+      {user && location.pathname !== '/login' && location.pathname !== '/' && (
+        <div className="App_nav">
+          <Nav navItems={navItems}></Nav>
         </div>
-      </UserContextProvider>
-    </AuthContextProvider>
+      )}
+    </div>
   );
 }
