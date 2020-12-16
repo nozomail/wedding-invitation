@@ -3,7 +3,8 @@ import './style.scss';
 
 type Props = {
   name?: string;
-  value?: any;
+  value?: string;
+  defaultValue?: string;
   required?: boolean;
   onChange?: React.ChangeEventHandler<HTMLSelectElement>;
   children: React.ReactNode;

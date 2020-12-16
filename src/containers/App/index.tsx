@@ -13,6 +13,7 @@ import { Timeline } from '@containers/Timeline';
 import { Honeymoon } from '@containers/Honeymoon';
 
 import { AuthContextProvider } from '@context/authContext';
+import { UserContextProvider } from '@context/userContext';
 
 const navItems = [
   {
@@ -51,24 +52,26 @@ export function App(): JSX.Element {
 
   return (
     <AuthContextProvider>
-      <div className="App" ref={appRef}>
-        <div className="App_main">
-          <Switch>
-            <Route exact path="/login" component={Login} />
-            <PrivateRoute exact path="/" component={Envelope} />
-            <PrivateRoute exact path="/invitation" component={Invitation} />
-            <PrivateRoute exact path="/venue" component={Venue} />
-            <PrivateRoute exact path="/rsvp" component={Rsvp} />
-            <PrivateRoute exact path="/timeline" component={Timeline} />
-            <PrivateRoute exact path="/honeymoon" component={Honeymoon} />
-          </Switch>
-        </div>
-        {location.pathname !== '/login' && location.pathname !== '/' && (
-          <div className="App_nav">
-            <Nav navItems={navItems}></Nav>
+      <UserContextProvider>
+        <div className="App" ref={appRef}>
+          <div className="App_main">
+            <Switch>
+              <Route exact path="/login" component={Login} />
+              <PrivateRoute exact path="/" component={Envelope} />
+              <PrivateRoute exact path="/invitation" component={Invitation} />
+              <PrivateRoute exact path="/venue" component={Venue} />
+              <PrivateRoute exact path="/rsvp" component={Rsvp} />
+              <PrivateRoute exact path="/timeline" component={Timeline} />
+              <PrivateRoute exact path="/honeymoon" component={Honeymoon} />
+            </Switch>
           </div>
-        )}
-      </div>
+          {location.pathname !== '/login' && location.pathname !== '/' && (
+            <div className="App_nav">
+              <Nav navItems={navItems}></Nav>
+            </div>
+          )}
+        </div>
+      </UserContextProvider>
     </AuthContextProvider>
   );
 }

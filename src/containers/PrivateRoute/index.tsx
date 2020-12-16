@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 import { Loader } from '@components/loader';
-import { useAuthContext } from '@hooks/useAuthContext';
+import { useUserContext } from '@hooks/useUserContext';
 
 type Props = {
   component: React.ComponentType<any>;
@@ -11,9 +11,9 @@ type Props = {
 };
 
 export function PrivateRoute({ component: Component, ...rest }: Props): JSX.Element {
-  const auth = useAuthContext();
+  const { isLoading, user } = useUserContext();
 
-  if (auth.isChecking) {
+  if (isLoading) {
     return <Loader />;
   }
 
@@ -21,7 +21,7 @@ export function PrivateRoute({ component: Component, ...rest }: Props): JSX.Elem
     <Route
       {...rest}
       render={(props) =>
-        auth.user ? (
+        user ? (
           <Component {...props} />
         ) : (
           <Redirect

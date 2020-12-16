@@ -7,6 +7,15 @@
     margin-top: 20px;
   }
 
+  .InputField {
+    margin-top: 10px;
+    padding-left: 40px;
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
   &.-question + &.-question {
     margin-top: 30px;
   }

@@ -13,36 +13,42 @@ import { Button } from '@components/Button';
 
 import deleteIcon from './assets/icon_delete.svg';
 
+import { useUserContext } from '@hooks/useUserContext';
+import { GuestProps, RsvpProps } from '@propTypes/user';
+
 const guestInfo = {
   firstName: '',
   lastName: '',
   title: '',
+  titleOther: '',
   kidsMenu: false,
   diet: '',
-};
-
-type guestInfoType = {
-  [key: string]: any;
-  firstName: string;
-  lastName: string;
-  title: string;
-  kidsMenu: boolean;
-  diet: string;
 };
 
 export function Rsvp(): JSX.Element {
   const [rsvp, setRsvp] = useState<boolean | null>(null);
   const [isSubmitted, setIsSubimitted] = useState(false);
   const [isStaying, setIsStaying] = useState(false);
-  const [guestList, setGuestList] = useState<guestInfoType[]>([{ ...guestInfo }]);
+  const [guestList, setGuestList] = useState<GuestProps[]>([{ ...guestInfo }]);
+  const { submitRsvp } = useUserContext();
 
   function handleGuestInfoChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
     i: number,
   ): void {
     const newGuestList = [...guestList];
-    newGuestList[i][e.target.name] = e.target.value;
+    if (e.target.type === 'checkbox') {
+      const target = e.target as HTMLInputElement;
+      newGuestList[i][e.target.name] = target.checked;
+    } else {
+      newGuestList[i][e.target.name] = e.target.value;
+    }
     setGuestList(newGuestList);
+  }
+
+  function handleRadioButtonsOnly(e: React.ChangeEvent<HTMLInputElement>) {
+    if (e.target.type !== 'radio') return;
+    setIsStaying(e.target.value === 'yes');
   }
 
   function addGuest() {
@@ -54,19 +60,32 @@ export function Rsvp(): JSX.Element {
     setGuestList(guestList.filter((guest, index) => index !== i));
   }
 
-  function handleSubmit(e: React.BaseSyntheticEvent) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const controlledInput = ['firstName', 'lastName', 'title', 'kidsMenu', 'diet'];
+    const formData = new FormData(e.target as HTMLFormElement);
+    const controlledInput = [
+      'rsvp',
+      'firstName',
+      'lastName',
+      'title',
+      'titleOther',
+      'kidsMenu',
+      'diet',
+    ];
     for (const name of controlledInput) {
       formData.delete(name);
     }
+
     const data: { [key: string]: any } = {};
     for (const [key, value] of formData) {
       data[key] = value;
     }
-    data.guests = guestList;
-    console.log(data);
+
+    data.rsvp = rsvp;
+    if (rsvp) {
+      data.guests = guestList;
+    }
+    submitRsvp(data as RsvpProps);
     setIsSubimitted(true);
   }
 
@@ -125,9 +144,11 @@ export function Rsvp(): JSX.Element {
                         <InputField label="TITLE" isRequired>
                           <Select
                             name="title"
+                            defaultValue=""
                             onChange={(e) => handleGuestInfoChange(e, i)}
                             required
                           >
+                            <option value="" disabled></option>
                             <option value="mr">MR.</option>
                             <option value="mrs">MRS.</option>
                             <option value="ms">MS.</option>
@@ -135,7 +156,19 @@ export function Rsvp(): JSX.Element {
                             <option value="dr">DR.</option>
                             <option value="other">OTHER</option>
                           </Select>
+                          {guest.title === 'other' && (
+                            <InputField label="PLEASE SPECIFY" isRequired>
+                              <Input
+                                type="text"
+                                name="titleOther"
+                                value={guest.titleOther}
+                                onChange={(e) => handleGuestInfoChange(e, i)}
+                                required
+                              />
+                            </InputField>
+                          )}
                         </InputField>
+
                         {i > 0 && (
                           <InputField label="">
                             <Checkbox
@@ -185,19 +218,19 @@ export function Rsvp(): JSX.Element {
                   >
                     <div
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                        setIsStaying(e.target.value === 'yes')
+                        handleRadioButtonsOnly(e)
                       }
                     >
                       <RadioButton name="stay" label="YES" value="yes" required />
+                      {isStaying && (
+                        <InputField label="LET US KNOW THE ADDRESS OF YOUR ACCOMMODATION SO WE CAN ARRANGE YOUR TRANSPORT.">
+                          <Input name="stayAddress" />
+                        </InputField>
+                      )}
                       <RadioButton name="stay" label="NO" value="no" />
                       <RadioButton name="stay" label="NOT SURE YET" value="unknown" />
                     </div>
                   </InputField>
-                  {isStaying && (
-                    <InputField label="LET US KNOW THE ADDRESS OF YOUR ACCOMMODATION SO WE CAN ARRANGE YOUR TRANSPORT.">
-                      <Input />
-                    </InputField>
-                  )}
                   <InputField
                     label="WOULD YOU LIKE TO JOIN A BEACH BBQ LUNCH IN AUCKLAND ON THE DAY AFTER THE WEDDING?"
                     isRequired

@@ -55,6 +55,7 @@ module.exports = {
       '@hooks': path.resolve(__dirname, 'src/hooks/'),
       '@services': path.resolve(__dirname, 'src/services/'),
       '@styles': path.resolve(__dirname, 'src/styles/'),
+      '@propTypes': path.resolve(__dirname, 'src/propTypes/'),
     },
   },
   plugins: [

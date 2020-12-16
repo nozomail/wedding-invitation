@@ -15,10 +15,11 @@
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@containers/*": ["src/containers/*"],
-      "@hooks/*": ["src/hooks/*"],
       "@context/*": ["src/context/*"],
+      "@hooks/*": ["src/hooks/*"],
       "@services/*": ["src/services/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@propTypes/*": ["src/propTypes/*"]
     }
   },
   "include": ["src/**/*"],
