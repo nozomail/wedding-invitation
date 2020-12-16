@@ -5,22 +5,12 @@ import './style.scss';
 import { CardEnvelope } from '@components/CardEnvelope';
 import { Button } from '@components/Button';
 
-const guests = [
-  {
-    firstName: 'John',
-    lastName: 'Smith',
-    title: 'Mr',
-  },
-  {
-    firstName: 'Kate',
-    lastName: 'Smith',
-    title: 'Mrs',
-  },
-];
+import { useUserContext } from '@hooks/useUserContext';
 
 export function Envelope(): JSX.Element {
   const [height, setHeight] = useState(0);
   const [cardState, setCardState] = useState('');
+  const { user } = useUserContext();
   const history = useHistory();
 
   useEffect(() => {
@@ -58,7 +48,7 @@ export function Envelope(): JSX.Element {
 
   return (
     <div className="Envelope" style={{ height: `${height}px` }}>
-      <CardEnvelope guests={guests} cardState={cardState}></CardEnvelope>
+      <CardEnvelope guests={user.recipients} cardState={cardState}></CardEnvelope>
       <div className="Envelope_skip">
         <Button
           color="secondary"

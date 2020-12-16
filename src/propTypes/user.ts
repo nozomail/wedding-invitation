@@ -4,7 +4,7 @@ export type UserProps = {
     lastName: string;
     title: string;
   }[];
-  haveKids: boolean;
+  hasKids: boolean;
   rsvp: RsvpProps;
 } | null;
 

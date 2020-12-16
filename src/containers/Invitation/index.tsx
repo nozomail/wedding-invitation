@@ -1,13 +1,14 @@
 import React from 'react';
 
 import { InvitationCard } from '@components/InvitationCard';
-
-const guests = ['John', 'Kate', 'family'];
+import { useUserContext } from '@hooks/useUserContext';
 
 export function Invitation(): JSX.Element {
+  const { user } = useUserContext();
+
   return (
     <div className="Invitation">
-      <InvitationCard guests={guests}></InvitationCard>
+      <InvitationCard user={user}></InvitationCard>
     </div>
   );
 }

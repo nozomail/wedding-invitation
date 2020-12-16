@@ -3,25 +3,35 @@ import { Link } from 'react-router-dom';
 import './style.scss';
 
 import { HelperText } from '@components/HelperText';
+import { UserProps } from '@propTypes/user';
 
 type Props = {
-  guests: string[];
+  user: UserProps;
 };
 
-export function InvitationCard({ guests }: Props): JSX.Element {
+export function InvitationCard({ user }: Props): JSX.Element {
+  const guests = user.recipients.map((recipient) => recipient.firstName);
+  if (user.hasKids) {
+    guests.push('family');
+  }
   const guestNames = guests.map((guest, index) => {
     switch (index) {
       case 0:
         return <span key={index}>{guest}</span>;
       case guests.length - 1:
         return (
-          <div key={index}>
+          <span key={index}>
             <span className="-and">&</span>
             <span>{guest}</span>
-          </div>
+          </span>
         );
       default:
-        return <span key={index}>, {guest}</span>;
+        return (
+          <span key={index}>
+            <span className="-comma">, </span>
+            <span>{guest}</span>
+          </span>
+        );
     }
   });
 
