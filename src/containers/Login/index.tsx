@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-// import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
 import './style.scss';
 
+import { Container } from '@components/Container';
 import { InputField } from '@components/InputField';
 import { Input } from '@components/Input';
 import { Block } from '@components/Block';
@@ -23,36 +23,38 @@ export function Login(): JSX.Element {
   }
 
   return (
-    <form className="Login">
-      <Block type="bottom" size="xl" justifyContent="center">
-        <img className="Login_image" src={img} alt="Nozomi & Matthew 01.01.2020" />
-      </Block>
-      <InputField label="EMAIL">
-        <Input
-          type="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-      </InputField>
-      <InputField label="PASSWORD">
-        <Input
-          type="password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-      </InputField>
-      <Block type="top" size="md">
-        <div className="u-text-red">{error}</div>
-      </Block>
-      <Block type="top" size="xl">
-        <Button type="submit" color="primary" icon="lock" onClick={(e) => handleSubmit(e)}>
-          OPEN
-        </Button>
-      </Block>
-    </form>
+    <Container className="Login">
+      <form>
+        <Block type="bottom" size="xl" justifyContent="center">
+          <img className="Login_image" src={img} alt="Nozomi & Matthew 01.01.2020" />
+        </Block>
+        <InputField label="EMAIL">
+          <Input
+            type="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+        </InputField>
+        <InputField label="PASSWORD">
+          <Input
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+        </InputField>
+        <Block type="top" size="md">
+          <div className="u-text-red">{error}</div>
+        </Block>
+        <Block type="top" size="xl" justifyContent="center">
+          <Button type="submit" color="primary" icon="lock" onClick={(e) => handleSubmit(e)}>
+            OPEN
+          </Button>
+        </Block>
+      </form>
+    </Container>
   );
 }

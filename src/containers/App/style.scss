@@ -6,11 +6,31 @@
 .App {
   height: 100%;
   overflow-y: scroll;
+
+  &::before {
+    content: '';
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    opacity: 0;
+    transition: opacity $dur_slow;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  &.is-loading::before {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
 .App_main {
-  padding: 20px 20px 40px;
-  min-height: calc(100% - 224px);
+  min-height: calc(100% - 269px);
+  position: relative;
 
   @include wide {
     min-height: 0;

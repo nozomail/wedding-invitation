@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Container } from '@components/Container';
 import { InvitationCard } from '@components/InvitationCard';
 import { useUserContext } from '@hooks/useUserContext';
 
@@ -7,8 +8,8 @@ export function Invitation(): JSX.Element {
   const { user } = useUserContext();
 
   return (
-    <div className="Invitation">
+    <Container className="Invitation">
       <InvitationCard user={user}></InvitationCard>
-    </div>
+    </Container>
   );
 }

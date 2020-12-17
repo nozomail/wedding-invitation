@@ -1,7 +1,7 @@
 @import '@styles/variables';
 .TimelineItem {
   display: flex;
-  letter-spacing: normal;
+  letter-spacing: 0.02em;
   margin-top: 10px;
 
   + .TimelineItem {
@@ -10,12 +10,12 @@
 
   .HelperText {
     color: $c_darkergray;
-    margin-left: 30px;
+    margin: 0 0 0 30px;
   }
 }
 
 .TimelineItem_head {
-  width: 80px;
+  width: 70px;
   text-align: right;
   flex-shrink: 0;
 }

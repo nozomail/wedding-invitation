@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import './style.scss';
 
+import { Container } from '@components/Container';
 import { CardEnvelope } from '@components/CardEnvelope';
 import { Button } from '@components/Button';
 
@@ -47,13 +48,13 @@ export function Envelope(): JSX.Element {
   }, []);
 
   return (
-    <div className="Envelope" style={{ height: `${height}px` }}>
+    <Container className="Envelope" style={{ height: `${height}px` }}>
       <CardEnvelope guests={user.recipients} cardState={cardState}></CardEnvelope>
       <div className="Envelope_skip">
         <Link to="/invitation">
           <Button color="secondary">SKIP</Button>
         </Link>
       </div>
-    </div>
+    </Container>
   );
 }

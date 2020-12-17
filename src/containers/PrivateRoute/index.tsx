@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import { Loader } from '@components/loader';
 import { useUserContext } from '@hooks/useUserContext';
 
 type Props = {
@@ -14,7 +13,7 @@ export function PrivateRoute({ component: Component, ...rest }: Props): JSX.Elem
   const { isLoading, user } = useUserContext();
 
   if (isLoading) {
-    return <Loader />;
+    return <></>;
   }
 
   return (

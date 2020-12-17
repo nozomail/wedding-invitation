@@ -3,7 +3,7 @@
 @import '@styles/functions';
 
 .InvitationCard {
-  max-width: 800px;
+  max-width: 600px;
   text-align: center;
   background-image: url('./assets/flower1.png'), url('./assets/flower2.png');
   background-repeat: no-repeat, no-repeat;
@@ -33,7 +33,7 @@
 
   .InvitationCard_julius {
     font-family: 'Julius Sans One';
-    font-size: vw(4.4);
+    font-size: vw(4);
     color: $c_green;
     font-weight: $fw_bold;
     letter-spacing: $ls_sm;

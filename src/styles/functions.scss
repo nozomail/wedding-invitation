@@ -1,5 +1,5 @@
 @function vw($value) {
-  @return calc(min(#{$value}vw, calc(6 * #{$value}px)));
+  @return calc(min(#{$value}vw, calc(5 * #{$value}px)));
 }
 
 @function pct($value) {
