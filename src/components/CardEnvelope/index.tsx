@@ -44,6 +44,7 @@ export function CardEnvelope({ guests, cardState }: Props): JSX.Element {
           <span className="-and">&</span>
           <span>Matthew Mail</span>
         </div>
+        <div>ARE DELIGHTED TO INVITE</div>
       </div>
       <div className="CardEnvelope_back"></div>
       <div className="CardEnvelope_lid">

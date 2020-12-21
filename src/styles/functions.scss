@@ -3,5 +3,5 @@
 }
 
 @function pct($value) {
-  @return calc(min(calc(#{$value} * 1%), calc(7 * #{$value}px)));
+  @return calc(min(calc(#{$value} * 1%), calc(6 * #{$value}px)));
 }

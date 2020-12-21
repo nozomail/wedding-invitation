@@ -5,7 +5,7 @@
 
 .CardEnvelope {
   width: 100%;
-  max-width: 700px;
+  max-width: 600px;
   padding-top: pct(600 / 840 * 100);
   line-height: 1;
   position: relative;
@@ -59,7 +59,7 @@
       height: vw(600 / 840 * 90 + 20);
       transition-duration: 3s;
       transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      transform: rotate3d(0, 1, 0, 0) translate3d(0, vw(-20), 0);
+      transform: rotate3d(0, 1, 0, 0) translate3d(0, pct(-20), 0);
     }
   }
 
@@ -98,9 +98,9 @@
 
     .CardEnvelope_guest {
       font-family: 'Great Vibes';
-      font-size: vw(8);
+      font-size: vw(6);
       line-height: 1.5;
-      color: #d5b617;
+      color: $c_gold;
     }
 
     .CardEnvelope_back {
@@ -159,13 +159,13 @@
       background: {
         image: url('./assets/flower1.png');
         repeat: no-repeat;
-        size: vw(60) auto;
-        position: left vw(-10) top vw(-5);
+        size: vw(50) auto, vw(40) auto;
+        position: left top;
         color: #ffff;
       }
       border-radius: $br_lg;
       box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
-      padding-top: vw(30);
+      padding: vw(25) vw(8) vw(20);
       position: absolute;
       top: vw(2);
       left: 0;
@@ -176,20 +176,31 @@
       transition: transform 1.4s ease-in-out, height 1s;
       transform: rotate3d(0, 1, 0, -180deg);
 
+      @include wide {
+        background-size: vw(60) auto, vw(40) auto;
+      }
+
       .CardEnvelope_host {
-        margin-bottom: vw(3);
+        margin-bottom: vw(6);
 
         span {
           display: block;
           font-family: 'Great Vibes';
-          font-size: vw(10);
+          font-size: vw(11);
           line-height: 1;
           color: $c_pink;
 
           &.-and {
-            font-size: vw(5);
+            font-size: vw(6);
             margin: vw(3) 0 vw(1);
           }
+        }
+
+        + div {
+          font-family: 'Crimson Text';
+          font-size: vw(3);
+          line-height: 1.8;
+          letter-spacing: $ls_sm;
         }
       }
     }

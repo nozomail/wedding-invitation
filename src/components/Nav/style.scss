@@ -30,7 +30,9 @@
 
   &:hover {
     opacity: 1;
-    background-color: $c_darkergray;
+    @include wide {
+      background-color: $c_darkergray;
+    }
   }
 
   @include wide {
