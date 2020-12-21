@@ -13,6 +13,7 @@ import { Venue } from '@containers/Venue';
 import { Rsvp } from '@containers/Rsvp';
 import { Timeline } from '@containers/Timeline';
 import { Honeymoon } from '@containers/Honeymoon';
+import { NotFound } from '@containers/NotFound';
 
 import { useUserContext } from '@hooks/useUserContext';
 import { NAV_ITEMS } from '@constants/nav';
@@ -42,6 +43,7 @@ export function App(): JSX.Element {
               <PrivateRoute exact path="/rsvp" component={Rsvp} />
               <PrivateRoute exact path="/timeline" component={Timeline} />
               <PrivateRoute exact path="/honeymoon" component={Honeymoon} />
+              <Route component={NotFound} />
             </Switch>
           </CSSTransition>
         </TransitionGroup>
