@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container } from '@components/Container';
 import { Card } from '@components/Card';
 import { Section } from '@components/Section';
 import { IndentSection } from '@components/IndentSection';
@@ -14,7 +13,7 @@ import { Map } from '@components/Map';
 
 export function Venue(): JSX.Element {
   return (
-    <Container className="Venue">
+    <div className="Venue">
       <Card title="Venue Info & Map">
         <Section title="MUDBRICK VINEYARD & RESTAURANT" icon="grape">
           <IndentSection title="PHONE">
@@ -97,6 +96,6 @@ export function Venue(): JSX.Element {
           </Button>
         </Link>
       </Block>
-    </Container>
+    </div>
   );
 }

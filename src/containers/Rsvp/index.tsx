@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
-import { Container } from '@components/Container';
 import { Card } from '@components/Card';
 import { Block } from '@components/Block';
 import { RsvpReview } from '@components/RsvpReview';
@@ -86,7 +85,7 @@ export function Rsvp(): JSX.Element {
   }, [isEditting]);
 
   return (
-    <Container className="Rsvp">
+    <div className="Rsvp">
       <SwitchTransition mode="out-in">
         {rsvp && !isEditting ? (
           <CSSTransition timeout={250} classNames="element" key="0">
@@ -350,6 +349,6 @@ export function Rsvp(): JSX.Element {
           </CSSTransition>
         )}
       </SwitchTransition>
-    </Container>
+    </div>
   );
 }

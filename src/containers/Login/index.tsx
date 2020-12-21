@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './style.scss';
 
-import { Container } from '@components/Container';
 import { InputField } from '@components/InputField';
 import { Input } from '@components/Input';
 import { Block } from '@components/Block';
@@ -23,7 +22,7 @@ export function Login(): JSX.Element {
   }
 
   return (
-    <Container className="Login">
+    <div className="Login">
       <form>
         <Block type="bottom" size="xl" justifyContent="center">
           <img className="Login_image" src={img} alt="Nozomi & Matthew 01.01.2020" />
@@ -55,6 +54,6 @@ export function Login(): JSX.Element {
           </Button>
         </Block>
       </form>
-    </Container>
+    </div>
   );
 }

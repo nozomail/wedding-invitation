@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Container } from '@components/Container';
 import { Card } from '@components/Card';
 import { Block } from '@components/Block';
 import { Text } from '@components/Text';
@@ -113,7 +112,7 @@ const plan6 = [
 
 export function Honeymoon(): JSX.Element {
   return (
-    <Container className="Honeymoon">
+    <div className="Honeymoon">
       <Card title="Honeymoon Contribution">
         <Block type="bottom" size="lg">
           <Text>
@@ -160,6 +159,6 @@ export function Honeymoon(): JSX.Element {
           <ThumbnailList thumbnails={plan6} />
         </Section>
       </Card>
-    </Container>
+    </div>
   );
 }
