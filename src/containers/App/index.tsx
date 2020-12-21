@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import './style.scss';
@@ -21,7 +21,7 @@ import { NAV_ITEMS } from '@constants/nav';
 export function App(): JSX.Element {
   const location = useLocation();
   const appRef = useRef<HTMLDivElement | null>(null);
-  const { user } = useUserContext();
+  const { user, isLoading } = useUserContext();
 
   useEffect(() => {
     appRef.current.scrollTo(0, 0);
@@ -29,12 +29,12 @@ export function App(): JSX.Element {
 
   return (
     <div className="App" ref={appRef}>
-      <CSSTransition in={user === null} timeout={750} classNames="loader">
+      <CSSTransition in={isLoading} timeout={750} classNames="loader">
         <Loader />
       </CSSTransition>
       <div className="App_main">
         <TransitionGroup>
-          <CSSTransition timeout={750} classNames="page" key={location.key}>
+          <CSSTransition timeout={750} classNames="page" key={location.pathname}>
             <Switch location={location}>
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/" component={Envelope} />

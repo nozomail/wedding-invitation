@@ -7,6 +7,7 @@ import { Block } from '@components/Block';
 import { Button } from '@components/Button';
 
 import { useAuthContext } from '@hooks/useAuthContext';
+import { useUserContext } from '@hooks/useUserContext';
 
 import img from './assets/front.png';
 
@@ -15,10 +16,12 @@ export function Login(): JSX.Element {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const { login } = useAuthContext();
+  const { reload } = useUserContext();
 
   function handleSubmit(e: React.MouseEvent<HTMLElement | MouseEvent>) {
     e.preventDefault();
     login(email, password, setError);
+    reload();
   }
 
   return (

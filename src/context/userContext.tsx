@@ -7,6 +7,7 @@ export type ContextProps = {
   isLoading: boolean;
   user: UserProps;
   submitRsvp: (rsvp: RsvpProps, setIsEditting: React.Dispatch<SetStateAction<boolean>>) => void;
+  reload: () => void;
 };
 
 type ContextProviderProps = {
@@ -32,6 +33,10 @@ export function UserContextProvider({ children }: ContextProviderProps): JSX.Ele
     }
   };
 
+  const reload = () => {
+    setIsLoading(true);
+  };
+
   useEffect(() => {
     auth.onAuthStateChanged((data) => {
       if (data) {
@@ -41,8 +46,11 @@ export function UserContextProvider({ children }: ContextProviderProps): JSX.Ele
           .doc(data.uid)
           .onSnapshot((doc) => {
             setUser(doc.data() as UserProps);
+
             setIsLoading(false);
           });
+      } else {
+        setIsLoading(false);
       }
     });
   }, []);
@@ -51,6 +59,7 @@ export function UserContextProvider({ children }: ContextProviderProps): JSX.Ele
     isLoading,
     user,
     submitRsvp,
+    reload,
   };
 
   return <context.Provider value={value}>{children}</context.Provider>;
