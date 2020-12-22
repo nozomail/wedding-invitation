@@ -4,8 +4,6 @@ Repository for my personal project.
 
 ![Wedding Invitation Screenshots](https://raw.githubusercontent.com/nozomail/wedding-invitation/main/project-image1.png)
 
-![Wedding Invitation Demo](https://raw.githubusercontent.com/nozomail/wedding-invitation/main/project-image2.gif)
-
 ## Features
 
 With this app, the invited guests can:
@@ -27,5 +25,7 @@ With this app, the invited guests can:
 
 ### Sample account
 
-Email: nmjsdev@gmail.com  
-Password: 010120
+Email: `nmjsdev@gmail.com`  
+Password: `010120`
+
+![Wedding Invitation Demo](https://raw.githubusercontent.com/nozomail/wedding-invitation/main/project-image2.gif)
