@@ -2,7 +2,7 @@ export const LABEL: {
   [key: string]: string;
 } = {
   attendanceYes: 'ACCEPT WITH PLEASURE',
-  attendanceNo: 'DICLINE WITH REGRET',
+  attendanceNo: 'DECLINE WITH REGRET',
   firstName: 'FIRST NAME',
   lastName: 'LAST NAME',
   title: 'TITLE',
@@ -30,11 +30,4 @@ export const GUEST_INFO = {
   diet: '',
 };
 
-export const CONTROLLED_INPUT = [
-  'firstName',
-  'lastName',
-  'title',
-  'titleOther',
-  'kidsMenu',
-  'diet',
-];
+export const CONTROLLED_INPUT = Object.keys(GUEST_INFO);
