@@ -101,6 +101,10 @@
       font-size: vw(6);
       line-height: 1.5;
       color: $c_gold;
+
+      @include wide {
+        font-size: vw(7);
+      }
     }
 
     .CardEnvelope_back {

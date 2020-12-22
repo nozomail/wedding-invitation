@@ -15,7 +15,7 @@ export function Envelope(): JSX.Element {
 
   useEffect(() => {
     function handleResize() {
-      setHeight(window.innerHeight - 60);
+      setHeight(window.innerHeight);
     }
 
     window.addEventListener('resize', handleResize);

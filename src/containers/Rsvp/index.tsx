@@ -124,9 +124,10 @@ export function Rsvp(): JSX.Element {
                     />
                   </div>
                 </Block>
-                <SwitchTransition>
-                  {attendance !== '' &&
-                    (attendance === 'yes' ? (
+
+                {attendance !== '' && (
+                  <SwitchTransition>
+                    {attendance === 'yes' ? (
                       <CSSTransition timeout={250} classNames="element" key="0">
                         <div>
                           {guestList.map((guest, i) => (
@@ -321,8 +322,9 @@ export function Rsvp(): JSX.Element {
                           </Block>
                         </div>
                       </CSSTransition>
-                    ))}
-                </SwitchTransition>
+                    )}
+                  </SwitchTransition>
+                )}
               </Card>
 
               {attendance !== '' && (
