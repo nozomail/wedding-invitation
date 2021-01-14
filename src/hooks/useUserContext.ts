@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
-import { context, contextProps } from '@context/userContext';
+import { context, ContextProps } from '@context/userContext';
 
-export function useUserContext(): contextProps {
+export function useUserContext(): ContextProps {
   return useContext(context);
 }

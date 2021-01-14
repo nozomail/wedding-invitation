@@ -11,7 +11,7 @@ export function NotFound(): JSX.Element {
     <div className="NotFound">
       <Block type="vertical" size="xl" justifyContent="center">
         <div>
-          <div className="NotFound_title">404 NOT FOUND</div>
+          <h1 className="NotFound_title">404 NOT FOUND</h1>
           <Text>Sorry, the page you requested could not found.</Text>
         </div>
       </Block>
