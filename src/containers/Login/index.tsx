@@ -16,12 +16,11 @@ export function Login(): JSX.Element {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const { login } = useAuthContext();
-  const { reload } = useUserContext();
+  const { setIsLoading } = useUserContext();
 
   function handleSubmit(e: React.MouseEvent<HTMLElement | MouseEvent>) {
     e.preventDefault();
-    login(email, password, setError);
-    reload();
+    login(email, password, setError, setIsLoading);
   }
 
   return (

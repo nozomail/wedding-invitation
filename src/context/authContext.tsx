@@ -8,6 +8,7 @@ export type ContextProps =
         email: string,
         password: String,
         setError: React.Dispatch<React.SetStateAction<String>>,
+        setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
       ) => void;
       logout: () => void;
     }
@@ -26,7 +27,9 @@ export function AuthContextProvider({ children }: ContextProviderProps): JSX.Ele
     email: string,
     password: string,
     setError: React.Dispatch<React.SetStateAction<String>>,
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
   ) => {
+    setIsLoading(true);
     auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
@@ -34,6 +37,7 @@ export function AuthContextProvider({ children }: ContextProviderProps): JSX.Ele
       })
       .catch((error) => {
         setError(error.message);
+        setIsLoading(false);
       });
   };
 
