@@ -1,6 +1,6 @@
 export const NAV_ITEMS = [
   {
-    name: 'INVITAION',
+    name: 'INVITATION',
     path: '/invitation',
   },
   {
